@@ -1,7 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
-
+ const card= document.getElementsByClassName('card');
+ // creates array of cards using spread.
+ let cards = [...card];
 
 /*
  * Display the cards on the page
@@ -21,10 +23,11 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
-}
-
+    console.log("shuffled");
+  }
+let restart = document.querySelector('.restart');
+restart.addEventListener('click', shuffle(cards));
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -36,3 +39,18 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+//adds event listener to all cards
+let deck = document.querySelector('.deck');
+deck.addEventListener('click', function(event){
+  showCard();
+});
+
+function showCard() {
+  if(event.target.className === 'card'){
+    event.target.classList.toggle('open');
+    event.target.classList.toggle('show');
+  }
+}
+
+let cardsOpen= [];
