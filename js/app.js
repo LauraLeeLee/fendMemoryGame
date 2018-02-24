@@ -1,3 +1,4 @@
+
 /*
  * Create a list that holds all of your cards
  */
@@ -28,6 +29,7 @@ function shuffle(array) {
     console.log("shuffled");
   }
 
+//function to start game shuffling cards randomly
 function startGame() {
   let cardsShuffled = shuffle(cards); //an array
   for(let i = 0; i < cardsShuffled.length; i++){
@@ -38,6 +40,8 @@ function startGame() {
 let restart = document.querySelector('.restart');
 restart.addEventListener('click', startGame);
 
+//starts game on window load/reload
+window.onload = startGame();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -62,3 +66,27 @@ function showCard() {
 }
 
 let cardsOpen= [];
+function openedCards() {
+  cardsOpen.push(event.target);
+  if (cardsOpen.length == 2) {
+    counterIncrement();
+    if(cardsOpen[0].type === cardsOpen[1].type){
+      theyMatch();
+    } else {
+      noMatch();
+    }
+  }
+}
+
+function theyMatch() {
+  cardsOpen[0].classList.add('match');
+  cardsOpen[1].classList.add('match');
+  cardsOpen[0].classList.remove('show', 'open');
+  cardsOpen[1].classList.remove('show', 'open');
+  cardsOpen = [];
+}
+
+function noMatch() {
+  cardsOpen[0].classList.add('');
+  cardsOpen[1].classList.add('');
+}
