@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
- const card= document.getElementsByClassName('card');
+ const deck = document.querySelector('.deck'); //ul- holder of cards
+ let card= document.getElementsByClassName('card');
  // creates array of cards using spread.
  let cards = [...card];
 
@@ -26,8 +27,16 @@ function shuffle(array) {
     return array;
     console.log("shuffled");
   }
+
+function startGame() {
+  let cardsShuffled = shuffle(cards); //an array
+  for(let i = 0; i < cardsShuffled.length; i++){
+    deck.appendChild(cardsShuffled[i]);
+  }
+}
+
 let restart = document.querySelector('.restart');
-restart.addEventListener('click', shuffle(cards));
+restart.addEventListener('click', startGame);
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -41,7 +50,6 @@ restart.addEventListener('click', shuffle(cards));
  */
 
 //adds event listener to all cards
-let deck = document.querySelector('.deck');
 deck.addEventListener('click', function(event){
   showCard();
 });
