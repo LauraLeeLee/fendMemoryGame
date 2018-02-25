@@ -56,6 +56,7 @@ window.onload = startGame();
 //adds event listener to all cards
 deck.addEventListener('click', function(event){
   showCard();
+  openedCards();
 });
 
 function showCard() {
@@ -65,16 +66,19 @@ function showCard() {
   }
 }
 
+// let cardImage = document.getElementsByTagName('i');
 let cardsOpen= [];
 function openedCards() {
   cardsOpen.push(event.target);
+    console.log(cardsOpen);
   if (cardsOpen.length == 2) {
-    counterIncrement();
-    if(cardsOpen[0].type === cardsOpen[1].type){
+    // counterIncrement();
+    if (cardsOpen[0]=== cardsOpen[1]){
       theyMatch();
     } else {
       noMatch();
     }
+
   }
 }
 
@@ -84,9 +88,12 @@ function theyMatch() {
   cardsOpen[0].classList.remove('show', 'open');
   cardsOpen[1].classList.remove('show', 'open');
   cardsOpen = [];
+
 }
 
 function noMatch() {
-  cardsOpen[0].classList.add('');
-  cardsOpen[1].classList.add('');
+  cardsOpen[0].classList.add('no-match');
+  cardsOpen[1].classList.add('no-match');
+  // cardsOpen[0].classList.remove('show', 'open');
+  // cardsOpen[1].classList.remove('show', 'open');
 }
