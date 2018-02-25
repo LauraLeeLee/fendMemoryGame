@@ -1,6 +1,6 @@
 # Memory Game Project
 
-* Live version here: (https://github.com/LauraLeeLee/fendMemoryGame/settings)
+* Live version here: (https://github.com/LauraLeeLee/fendMemoryGame/)
 
 ## Table of Contents
 
