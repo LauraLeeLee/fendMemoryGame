@@ -70,25 +70,33 @@ function showCard() {
 let cardsOpen= [];
 function openedCards() {
   cardsOpen.push(event.target);
-    console.log(cardsOpen);
+
+  console.dir(event.target);
+
+  children = cardsOpen[0].childNodes;
+  // console.log(children);
+  for(let i = 0; i<children.length;i++){
+    console.log("image classname: " + children[i].className);
+  }
+
+  console.log("image classname: " + cardsOpen[0].childNodes);
   if (cardsOpen.length == 2) {
     // counterIncrement();
-    if (cardsOpen[0]=== cardsOpen[1]){
+    if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
       theyMatch();
     } else {
       noMatch();
     }
-
   }
 }
 
 function theyMatch() {
-  cardsOpen[0].classList.add('match');
-  cardsOpen[1].classList.add('match');
-  cardsOpen[0].classList.remove('show', 'open');
-  cardsOpen[1].classList.remove('show', 'open');
-  cardsOpen = [];
-
+    cardsOpen[0].classList.add('match');
+    cardsOpen[1].classList.add('match');
+    cardsOpen[0].classList.remove('show', 'open');
+    cardsOpen[1].classList.remove('show', 'open');
+    cardsOpen = [];
+  console.log('they match');
 }
 
 function noMatch() {
