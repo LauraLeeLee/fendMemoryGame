@@ -7,6 +7,12 @@
  // creates array of cards using spread.
  let cards = [...card];
 
+ let star1 = document.querySelector('.one');
+ let star2 = document.querySelector('.two');
+ let star3 = document.querySelector('.three');
+ let counter =document.getElementsByClassName('moves');
+ let score = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -38,7 +44,13 @@ function startGame() {
 }
 
 let restart = document.querySelector('.restart');
-restart.addEventListener('click', startGame);
+restart.addEventListener('click', function(event){
+  startGame();
+  counter[0].innerHTML = 0;
+  star3.style.visibility = 'visible';
+  star2.style.visibility = 'visible';
+  star1.style.visibility = 'visible';
+});
 
 //starts game on window load/reload
 window.onload = startGame();
@@ -80,12 +92,11 @@ function openedCards() {
   //   }
   // }
   if (cardsOpen.length == 2) {
-    // counterIncrement();
-  if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
-      theyMatch();
-    } else {
-      noMatch();
-    }
+    if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
+        theyMatch();
+      } else {
+        noMatch();
+      }
   }
 }
 
@@ -116,8 +127,6 @@ function noMatchFlip() {
 }
 
 //function to increment move counter, called in eventListener for card click
-let counter =document.getElementsByClassName('moves');
-let score = 0;
 function moveCounter() {
     score++;
     counter[0].innerHTML = score;
@@ -126,9 +135,7 @@ function moveCounter() {
 
 //star rating determined by how many clicks used to win game
 function starRating() {
-  let star1 = document.querySelector('.one');
-  let star2 = document.querySelector('.two');
-  let star3 = document.querySelector('.three');
+
   if((score > 9) && (score <= 16)) {
     star3.style.visibility = 'hidden';
   }
