@@ -77,16 +77,14 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #ffff99;
+    color: #000;
     font-size: 33px;
 }
 
 .deck .card.no-match {
   background: #990000;
   transform: rotateY(-180deg);
-  /* background: #2e3d49;
-  font-size: 0; */
-
 }
 
 /*
