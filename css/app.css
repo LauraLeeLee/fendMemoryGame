@@ -87,6 +87,10 @@ h1 {
   transform: rotateY(-180deg);
 }
 
+.fa-star {
+  
+}
+
 /*
  * Styles for the Score Panel
  */

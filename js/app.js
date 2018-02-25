@@ -57,10 +57,11 @@ window.onload = startGame();
 deck.addEventListener('click', function(event){
   showCard();
   openedCards();
+  moveCounter();
 });
 
 function showCard() {
-  if(event.target.className === 'card'){
+  if((event.target.className === 'card') && (cardsOpen.length<2)){
     event.target.classList.toggle('open');
     event.target.classList.toggle('show');
   }
@@ -72,17 +73,14 @@ function openedCards() {
   cardsOpen.push(event.target);
 
   // console.dir(event.target);
-
-  children = cardsOpen[0].childNodes;
-  // console.log(children);
-  // for(let i = 0; i<children.length;i++){
-  //   console.log("image classname: " + children[i].className);
+  // if (cardsOpen.length == 1) {
+  //   if(cardsOpen[0].firstElementChild.className === cardsOpen[0].firstElementChild.className) {
+  //     noMatch();
+  //   }
   // }
-
-  // console.log("image classname: " + cardsOpen[0].childNodes);
   if (cardsOpen.length == 2) {
     // counterIncrement();
-    if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
+  if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
       theyMatch();
     } else {
       noMatch();
@@ -114,5 +112,31 @@ function noMatchFlip() {
       cardsOpen = [];
       console.log("no match");
     }, 1000);
-
 }
+
+//function to increment move counter, called in eventListener for card click
+let counter =document.getElementsByClassName('moves');
+let score = 0;
+function moveCounter() {
+    score++;
+    counter[0].innerHTML = score;
+    console.log('counter increments');
+}
+
+function starRating() {
+  let star1 = document.querySelector('.one');
+  let star2 = document.querySelector('.two');
+  let star3 = document.querySelector('.three');
+   if((counter >=11) && (counter <= 20)) {
+    star3.style.visibility = 'hidden';
+    console.log('11 to 20');
+  } else {
+
+  }
+}
+
+// function disable() {
+//   if(cardsOpen.length > 0) {
+//     cardsOpen[0]
+//   }
+// }
