@@ -57,13 +57,14 @@ window.onload = startGame();
 deck.addEventListener('click', function(event){
   showCard();
   openedCards();
-  moveCounter();
+
 });
 
 function showCard() {
   if((event.target.className === 'card') && (cardsOpen.length<2)){
     event.target.classList.toggle('open');
     event.target.classList.toggle('show');
+    moveCounter();
   }
 }
 
@@ -120,18 +121,25 @@ let score = 0;
 function moveCounter() {
     score++;
     counter[0].innerHTML = score;
-    console.log('counter increments');
+    starRating();
 }
 
+//star rating determined by how many clicks used to win game
 function starRating() {
   let star1 = document.querySelector('.one');
   let star2 = document.querySelector('.two');
   let star3 = document.querySelector('.three');
-   if((counter >=11) && (counter <= 20)) {
+  if((score > 9) && (score <= 16)) {
     star3.style.visibility = 'hidden';
-    console.log('11 to 20');
-  } else {
-
+  }
+  if((score >16) && (score <=28)) {
+  star3.style.visibility = 'hidden';
+  star2.style.visibility = 'hidden';
+  }
+  if(score >28) {
+    star3.style.visibility = 'hidden';
+    star2.style.visibility = 'hidden';
+    star1.style.visibility = 'hidden';
   }
 }
 
