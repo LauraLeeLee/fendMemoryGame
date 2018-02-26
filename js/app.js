@@ -12,6 +12,7 @@
  let star3 = document.querySelector('.three');
  let counter =document.getElementsByClassName('moves');
  let score = 0;
+ let matchedSets = 0;
 
 /*
  * Display the cards on the page
@@ -40,16 +41,18 @@ function startGame() {
   let cardsShuffled = shuffle(cards); //an array
   for(let i = 0; i < cardsShuffled.length; i++){
     deck.appendChild(cardsShuffled[i]);
+    counter[0].innerHTML = 0;
+    star3.style.visibility = 'visible';
+    star2.style.visibility = 'visible';
+    star1.style.visibility = 'visible';
+    matchedSets = 0;
   }
 }
 
 let restart = document.querySelector('.restart');
 restart.addEventListener('click', function(event){
+  removeMatch();
   startGame();
-  counter[0].innerHTML = 0;
-  star3.style.visibility = 'visible';
-  star2.style.visibility = 'visible';
-  star1.style.visibility = 'visible';
 });
 
 //starts game on window load/reload
@@ -80,11 +83,14 @@ function showCard() {
   }
 }
 
+function removeMatch() {
+ card.classList.remove('match');
+}
+
 // let cardImage = document.getElementsByTagName('i');
 let cardsOpen= [];
 function openedCards() {
   cardsOpen.push(event.target);
-
   // console.dir(event.target);
   // if (cardsOpen.length == 1) {
   //   if(cardsOpen[0].firstElementChild.className === cardsOpen[0].firstElementChild.className) {
@@ -105,8 +111,12 @@ function theyMatch() {
     cardsOpen[1].classList.add('match');
     cardsOpen[0].classList.remove('show', 'open');
     cardsOpen[1].classList.remove('show', 'open');
+    console.log(cardsOpen);
     cardsOpen = [];
-  console.log('they match');
+    matchedSets++;
+    winGame();
+  console.log('matchedSets: ' + matchedSets);
+
 }
 
 function noMatch() {
@@ -122,7 +132,6 @@ function noMatchFlip() {
       cardsOpen[0].classList.remove('show', 'open');
       cardsOpen[1].classList.remove('show', 'open');
       cardsOpen = [];
-      console.log("no match");
     }, 1000);
 }
 
@@ -148,9 +157,13 @@ function starRating() {
     star1.style.visibility = 'hidden';
   }
 }
-
+let modal = document.getElementById('modal');
 function winGame() {
-  
+  if(matchedSets === 8){
+    modal.style.visibility = 'visible';
+    console.log('you win!');
+    console.log(cards);
+  }
 }
 
 // function disable() {
