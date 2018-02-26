@@ -135,7 +135,6 @@ function moveCounter() {
 
 //star rating determined by how many clicks used to win game
 function starRating() {
-
   if((score > 9) && (score <= 16)) {
     star3.style.visibility = 'hidden';
   }
@@ -148,6 +147,10 @@ function starRating() {
     star2.style.visibility = 'hidden';
     star1.style.visibility = 'hidden';
   }
+}
+
+function winGame() {
+  
 }
 
 // function disable() {
