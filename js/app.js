@@ -84,7 +84,9 @@ function showCard() {
 }
 
 function removeMatch() {
- card.classList.remove('match');
+  cards.forEach(function(item){
+    item.classList.remove('match');
+  });
 }
 
 // let cardImage = document.getElementsByTagName('i');
