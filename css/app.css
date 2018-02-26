@@ -130,6 +130,12 @@ h1 {
     border: 1px solid red;
 }
 
+/*styles for timer  */
+#timer {
+  font-size: 1em;
+  color: #000;
+}
+
 /* styles for the modal */
 #modal {
   display: flex;

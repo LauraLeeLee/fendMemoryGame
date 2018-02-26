@@ -72,7 +72,7 @@ window.onload = startGame();
 deck.addEventListener('click', function(event){
   showCard();
   openedCards();
-
+  startTimer()
 });
 
 function showCard() {
@@ -118,6 +118,11 @@ function theyMatch() {
     matchedSets++;
     winGame();
   console.log('matchedSets: ' + matchedSets);
+
+
+  // cardsOpen.forEach(function(item){
+  //   item.removeEventListener('click', function(event));
+  // });
 
 }
 
@@ -173,3 +178,29 @@ function winGame() {
 //     cardsOpen[0]
 //   }
 // }
+
+/*code for timer */
+let seconds, minutes, hours;
+let timer = document.getElementById('timer');
+timer = '0:00:00';
+
+function timerIncrements() {
+  seconds++;
+  if(seconds >= 60){
+    seconds = 0;
+    minutes++;
+    if(minutes >= 60){
+      minutes = 0;
+      hours++;
+    }
+  }
+  console.log(hours +':' + minutes + ':' + seconds);
+}
+
+timer.innerHTML = hours +':' + minutes + ':' + seconds;
+
+function startTimer() {
+  setTimeout(function(){
+    timerIncrements();
+  }, 1000);
+}
