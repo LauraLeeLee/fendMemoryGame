@@ -150,10 +150,10 @@ h1 {
   bottom: 540px;
   width: 500px;
   height: 300px;
-  background: linear-gradient(to bottom, #ffa31a , #ffff1a, #006622, #00e6e6, #000099, #bf80ff);
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  background-color: #ffffe6;
+  border: 25px double #000099;
 }
+
 
 button {
   align-self: center;

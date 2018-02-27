@@ -11,6 +11,7 @@
  let star2 = document.querySelector('.two');
  let star3 = document.querySelector('.three');
  let counter =document.getElementsByClassName('moves');
+ let modal = document.getElementById('modal');
  let score = 0;
  let matchedSets = 0;
 
@@ -121,12 +122,9 @@ function theyMatch() {
     matchedSets++;
     winGame();
   console.log('matchedSets: ' + matchedSets);
-
-
   // cardsOpen.forEach(function(item){
   //   item.removeEventListener('click', function(event));
   // });
-
 }
 
 function noMatch() {
@@ -167,9 +165,21 @@ function starRating() {
     star1.style.visibility = 'hidden';
   }
 }
-let modal = document.getElementById('modal');
+
+/*function to check if game has been won- all cards matched */
 function winGame() {
   if(matchedSets === 8){
+    let modalHeader = document.getElementById('modal-header');
+    let winScore = document.createElement('h3');
+    winScore.classList.add('win-score')
+    winScore.innerHTML = 'You finished in ' + score + ' moves!';
+    let starRate = document.createElement('h3');
+    starRate.classList.add('star-rate')
+    starRate.innerHTML = 'Your star rating was ';
+    console.log(modal);
+    modalHeader.appendChild(winScore);
+    modalHeader.appendChild(starRate);
+
     modal.style.visibility = 'visible';
     console.log('you win!');
     console.log(cards);
@@ -181,6 +191,8 @@ function winGame() {
 //     cardsOpen[0]
 //   }
 // }
+
+
 
 /*code for timer */
 let seconds = 00;
@@ -221,8 +233,6 @@ timer.innerHTML = hours +':' + minutes + ':' + seconds;
 console.log(hours +':' + minutes + ':' + seconds);
   startTimer();
  }
-
-
     // h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00")
     // + ":" +
     // (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00")
