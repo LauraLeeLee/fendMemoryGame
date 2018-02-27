@@ -128,15 +128,15 @@ function theyMatch() {
 }
 
 function noMatch() {
-  cardsOpen[0].classList.add('no-match');
-  cardsOpen[1].classList.add('no-match');
+  cardsOpen[0].classList.add('no-match', 'no-match-shake');
+  cardsOpen[1].classList.add('no-match', 'no-match-shake');
   noMatchFlip();
 }
 
 function noMatchFlip() {
     setTimeout(function(){
-      cardsOpen[0].classList.remove('no-match');
-      cardsOpen[1].classList.remove('no-match');
+      cardsOpen[0].classList.remove('no-match', 'no-match-shake');
+      cardsOpen[1].classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].classList.remove('show', 'open');
       cardsOpen[1].classList.remove('show', 'open');
       cardsOpen = [];
