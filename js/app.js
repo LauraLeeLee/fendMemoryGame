@@ -49,11 +49,15 @@ function startGame() {
   }
 }
 
-let restart = document.querySelector('.restart');
-restart.addEventListener('click', function(event){
-  removeMatch();
-  startGame();
-});
+let restart = document.getElementsByClassName('restart');
+let restarts = [...restart];
+  for(let i = 0; i < restart.length; i++) {
+  restarts[i].addEventListener('click', function(event){
+    removeMatch();
+    startGame();
+    modal.style.visibility = 'hidden';
+  });
+}
 
 //starts game on window load/reload
 window.onload = startGame();
@@ -72,7 +76,6 @@ window.onload = startGame();
 deck.addEventListener('click', function(event){
   showCard();
   openedCards();
-  startTimer()
 });
 
 function showCard() {
@@ -180,27 +183,54 @@ function winGame() {
 // }
 
 /*code for timer */
-let seconds, minutes, hours;
+let seconds = 00;
+let minutes = 00;
+let hours = 0;
 let timer = document.getElementById('timer');
-timer = '0:00:00';
+// timer.innerHTML = '0:00:00';
 
 function timerIncrements() {
-  seconds++;
-  if(seconds >= 60){
+
+    seconds++;
+    if(seconds>=60){
     seconds = 0;
     minutes++;
-    if(minutes >= 60){
-      minutes = 0;
-      hours++;
-    }
-  }
-  console.log(hours +':' + minutes + ':' + seconds);
-}
+      if(minutes >= 60){
+        minutes = 0;
+        hours++;
+      }
+   }
+
+  // if (seconds <=9){
+  //   seconds = '0' + seconds;
+  // } else {
+  //   seconds = seconds;
+  // }
+  // if (minutes > 9) {
+  //   minutes = minutes;
+  // }
+  //  else if((minutes >=1 && minutes <= 9)) {
+  //   minutes = '0' + minutes;
+  // } else {
+  //   minutes = '00';
+  // }
+seconds = (seconds > 9 ? seconds : '0' + seconds);
+minutes = (minutes > 0 ? (minutes > 9 ? minutes : '0' + minutes) : '00');
 
 timer.innerHTML = hours +':' + minutes + ':' + seconds;
+console.log(hours +':' + minutes + ':' + seconds);
+  startTimer();
+ }
+
+
+    // h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00")
+    // + ":" +
+    // (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00")
+    // + ":" +
+    // (seconds > 9 ? seconds : "0" + seconds);
 
 function startTimer() {
-  setTimeout(function(){
-    timerIncrements();
-  }, 1000);
+  setTimeout(timerIncrements, 1000);
 }
+
+// startTimer();

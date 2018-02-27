@@ -131,9 +131,9 @@ h1 {
 }
 
 /*styles for timer  */
-#timer {
+#timer, #stop-watch {
   font-size: 1em;
-  color: #000;
+  color: #000099;
 }
 
 /* styles for the modal */
@@ -145,6 +145,9 @@ h1 {
   text-align: center;
   margin: 0 auto 0;
   visibility: hidden;
+  z-index: 9;
+  position: relative;
+  bottom: 540px;
   width: 500px;
   height: 300px;
   background: linear-gradient(to bottom, #ffa31a , #ffff1a, #006622, #00e6e6, #000099, #bf80ff);
