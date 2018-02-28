@@ -113,7 +113,7 @@ h1 {
 }
 
 .match-grow {
-  animation: grow 1s 0.75s;
+  animation: grow 1s linear 0.2s;
 }
 
 @-webkit-keyframes grow {
