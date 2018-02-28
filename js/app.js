@@ -77,11 +77,10 @@ window.onload = startGame();
 
 //adds event listener to all cards
 deck.addEventListener('click', function(event){
-  // Start stopwatch on first click
+  // check for game start on first click
   if (!gameStarted) {
-    // start timer!
-    stopWatch();
     gameStarted = true;
+    stopWatch();
   }
   showCard();
   openedCards();
