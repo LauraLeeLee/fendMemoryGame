@@ -1,4 +1,4 @@
-body, h1, div {
+body, h1, h2, h3, div {
   margin: 0;
   padding: 0;
 }
@@ -181,10 +181,13 @@ h1 {
   border: 25px double #000099;
 }
 
-
 button {
   align-self: center;
   width: 60px;
   height: 60px;
   border-radius: 60px;
+}
+
+.win-score, .final-time, .star-rate {
+
 }

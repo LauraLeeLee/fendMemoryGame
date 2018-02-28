@@ -16,6 +16,7 @@
  let matchedSets = 0;
  let gameStarted = false;
  let timeCount;
+ let currentTime;
 
 /*
  * Display the cards on the page
@@ -183,13 +184,17 @@ function winGame() {
     if(matchedSets === 8){
       let modalHeader = document.getElementById('modal-header');
       let winScore = document.createElement('h3');
-      winScore.classList.add('win-score')
+      let finalTime = document.createElement('h3');
+      winScore.classList.add('win-score');
+      finalTime.classList.add('final-time');
       winScore.innerHTML = 'You finished in ' + score + ' moves!';
+      finalTime.innerHTML = 'You matched all cards in ' + currentTime;
       let starRate = document.createElement('h3');
       starRate.classList.add('star-rate')
       starRate.innerHTML = 'Your star rating was ';
       modalHeader.appendChild(winScore);
       modalHeader.appendChild(starRate);
+      modalHeader.appendChild(finalTime);
       clearInterval(timeCount);
       modal.style.visibility = 'visible';
       console.log('you win!');
@@ -228,7 +233,7 @@ function stopWatch() {
     if(mins < 10) {
       mins = '0' + mins;
     }
-    let currentTime = hours + ':' + mins + ':' + secs;
+    currentTime = hours + ':' + mins + ':' + secs;
 
     // update counter on page
     timer.innerHTML = currentTime;
