@@ -42,6 +42,7 @@ function startGame() {
   let cardsShuffled = shuffle(cards); //an array
   for(let i = 0; i < cardsShuffled.length; i++){
     deck.appendChild(cardsShuffled[i]);
+    score = 0;
     counter[0].innerHTML = 0;
     star3.style.visibility = 'visible';
     star2.style.visibility = 'visible';
@@ -89,7 +90,9 @@ function showCard() {
 
 function removeMatch() {
   cards.forEach(function(item){
-    item.classList.remove('match', '.match-grow');
+    item.classList.remove('match', 'match-grow');
+    console.log(item);
+    console.log('match classes removed?');
   });
 }
 
@@ -168,22 +171,23 @@ function starRating() {
 
 /*function to check if game has been won- all cards matched */
 function winGame() {
-  if(matchedSets === 8){
-    let modalHeader = document.getElementById('modal-header');
-    let winScore = document.createElement('h3');
-    winScore.classList.add('win-score')
-    winScore.innerHTML = 'You finished in ' + score + ' moves!';
-    let starRate = document.createElement('h3');
-    starRate.classList.add('star-rate')
-    starRate.innerHTML = 'Your star rating was ';
-    console.log(modal);
-    modalHeader.appendChild(winScore);
-    modalHeader.appendChild(starRate);
+  setTimeout(function(){
+    if(matchedSets === 8){
+      let modalHeader = document.getElementById('modal-header');
+      let winScore = document.createElement('h3');
+      winScore.classList.add('win-score')
+      winScore.innerHTML = 'You finished in ' + score + ' moves!';
+      let starRate = document.createElement('h3');
+      starRate.classList.add('star-rate')
+      starRate.innerHTML = 'Your star rating was ';
+      modalHeader.appendChild(winScore);
+      modalHeader.appendChild(starRate);
 
-    modal.style.visibility = 'visible';
-    console.log('you win!');
-    console.log(cards);
-  }
+      modal.style.visibility = 'visible';
+      console.log('you win!');
+      console.log(cards);
+    }
+  }, 1000);
 }
 
 // function disable() {
