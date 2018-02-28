@@ -15,6 +15,7 @@
  let score = 0;
  let matchedSets = 0;
  let gameStarted = false;
+ let timeCount;
 
 /*
  * Display the cards on the page
@@ -45,6 +46,7 @@ function startGame() {
     deck.appendChild(cardsShuffled[i]);
     score = 0;
     counter[0].innerHTML = 0;
+    timer.innerHTML = '0:00:00';
     star3.style.visibility = 'visible';
     star2.style.visibility = 'visible';
     star1.style.visibility = 'visible';
@@ -188,7 +190,7 @@ function winGame() {
       starRate.innerHTML = 'Your star rating was ';
       modalHeader.appendChild(winScore);
       modalHeader.appendChild(starRate);
-
+      clearInterval(timeCount);
       modal.style.visibility = 'visible';
       console.log('you win!');
       console.log(cards);
@@ -208,7 +210,7 @@ function stopWatch() {
   let startTime = new Date().getTime();
 
   //increment per second the stopwatch counter on page
-  const timeCount = setInterval(function() {
+  timeCount = setInterval(function() {
     let now = new Date().getTime();
 
     //find elapsed time between startTime and now
