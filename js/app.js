@@ -208,7 +208,7 @@ function stopWatch() {
   let startTime = new Date().getTime();
 
   //increment per second the stopwatch counter on page
-  counter = setInterval(function() {
+  const timeCount = setInterval(function() {
     let now = new Date().getTime();
 
     //find elapsed time between startTime and now
