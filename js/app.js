@@ -89,7 +89,7 @@ function showCard() {
 
 function removeMatch() {
   cards.forEach(function(item){
-    item.classList.remove('match');
+    item.classList.remove('match', '.match-grow');
   });
 }
 
@@ -113,8 +113,8 @@ function openedCards() {
 }
 
 function theyMatch() {
-    cardsOpen[0].classList.add('match');
-    cardsOpen[1].classList.add('match');
+    cardsOpen[0].classList.add('match', 'match-grow');
+    cardsOpen[1].classList.add('match', 'match-grow');
     cardsOpen[0].classList.remove('show', 'open');
     cardsOpen[1].classList.remove('show', 'open');
     console.log(cardsOpen);
