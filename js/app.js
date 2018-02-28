@@ -192,55 +192,66 @@ function winGame() {
 //   }
 // }
 
-
-
 /*code for timer */
-let seconds = 00;
-let minutes = 00;
-let hours = 0;
-let timer = document.getElementById('timer');
-// timer.innerHTML = '0:00:00';
+function stopWatch() {
+  //extract time right now
+  let startTime = new Date().getTime();
 
-function timerIncrements() {
+  //increment per second the stopwatch counter on page
+  counter = setInterval(function() {
+    let now = new Date().getTime();
 
-    seconds++;
-    if(seconds>=60){
-    seconds = 0;
-    minutes++;
-      if(minutes >= 60){
-        minutes = 0;
-        hours++;
-      }
-   }
+    //find elapsed time between startTime and now
+    let elapsedTime = now - startTime;
 
-  // if (seconds <=9){
-  //   seconds = '0' + seconds;
-  // } else {
-  //   seconds = seconds;
-  // }
-  // if (minutes > 9) {
-  //   minutes = minutes;
-  // }
-  //  else if((minutes >=1 && minutes <= 9)) {
-  //   minutes = '0' + minutes;
-  // } else {
-  //   minutes = '00';
-  // }
-seconds = (seconds > 9 ? seconds : '0' + seconds);
-minutes = (minutes > 0 ? (minutes > 9 ? minutes : '0' + minutes) : '00');
+    //find minutes and seconds
+    let secs = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+    let mins = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+    let hours = Math.floor((elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-timer.innerHTML = hours +':' + minutes + ':' + seconds;
-console.log(hours +':' + minutes + ':' + seconds);
-  startTimer();
- }
-    // h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00")
-    // + ":" +
-    // (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00")
-    // + ":" +
-    // (seconds > 9 ? seconds : "0" + seconds);
+    //add preface of 0 if secs < 10 and if mins < 10
+    if(secs < 10) {
+      secs = '0' + secs;
+    }
+    if(mins < 10) {
+      mins = '0' + mins;
+    }
+    let currentTime = hours + ':' + mins + ':' + secs;
 
-function startTimer() {
-  setTimeout(timerIncrements, 1000);
-}
+    // update counter on page
+    timer.innerHTML = currentTime;
+  }, 1000);
+};
+
+// stopWatch();
+
+
+
+// let seconds = 00;
+// let minutes = 00;
+// let hours = 0;
+// let timer = document.getElementById('timer');
+//
+// function timerIncrements() {
+//     seconds++;
+//     if(seconds>=60){
+//     seconds = 0;
+//     minutes++;
+//       if(minutes >= 60){
+//         minutes = 0;
+//         hours++;
+//       }
+//    }
+// seconds = (seconds > 9 ? seconds : '0' + seconds);
+// minutes = (minutes > 0 ? (minutes > 9 ? minutes : '0' + minutes) : '00');
+//
+// timer.innerHTML = hours +':' + minutes + ':' + seconds;
+// console.log(hours +':' + minutes + ':' + seconds);
+//   startTimer();
+//  }
+//
+// function startTimer() {
+//   setTimeout(timerIncrements, 1000);
+// }
 
 // startTimer();
