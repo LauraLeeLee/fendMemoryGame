@@ -113,12 +113,14 @@ h1 {
 }
 
 .match-grow {
-  animation: grow 1s 0.5s;
+  animation: grow 1s 0.75s;
 }
 
 @-webkit-keyframes grow {
   from { transform: none; }
-  50% { transform: scale(1.5); }
+  10% {transform: rotate(10deg);}
+  50% { transform: scale(2); }
+  60% {transform: rotate(-10deg);}
   to { transform: none; }
 }
 
