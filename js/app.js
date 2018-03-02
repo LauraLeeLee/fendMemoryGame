@@ -11,6 +11,7 @@
  let cards =[];
  let fullDeck = [];
  let card;
+ let cardImage;
  let star1 = document.querySelector('.one');
  let star2 = document.querySelector('.two');
  let star3 = document.querySelector('.three');
@@ -44,8 +45,13 @@ function renderCardsToGame() {
   let cardsShuffled = shuffle(fullDeck); //an array
   //appends shuffled cards to the game board(deck)
   for(let i = 0; i < cardsShuffled.length; i++){
-    // let liCard = `<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`;
-    deck.appendChild(`<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`);
+   // let liCard = `<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`;
+    card = document.createElement('li');
+    card.classList.add('card');
+    cardImage = document.createElement('i');
+    card.appendChild(cardImage);
+    deck.appendChild(card);
+
   }
   console.log(cardsShuffled);
 }
