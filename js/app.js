@@ -54,22 +54,20 @@ function renderCardsToGame() {
     cardImageEl.classList.add('fa', cardsShuffled[i]);
     cardEl.appendChild(cardImageEl);
     deck.appendChild(cardEl);
-  }
-
-  //adds event listener to all cards
-  cardsShuffled.forEach(function(card){
-    addEventListener('click', function(event){
-    // check for game start on first click
-      if (!gameStarted) {
-        gameStarted = true;
-        stopWatch();
-      }
-      showCard();
-      openedCards();
-      // console.dir(event.target.className);
+    //adds event listener to all cards
+    cardEl.addEventListener('click', function(event){
+      // check for game start on first click
+        if (!gameStarted) {
+          gameStarted = true;
+          stopWatch();
+        }
+        showCard();
+        openedCards();
+        // console.dir(event.target.className);
     });
-  });
+  }
 }
+console.log(cardsShuffled);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -145,11 +143,7 @@ function removeMatch() {
 let cardsOpen= [];
 function openedCards() {
   cardsOpen.push(cardEl);
-  // if (cardsOpen.length == 1) {
-  //   if(cardsOpen[0].firstElementChild.className === cardsOpen[0].firstElementChild.className) {
-  //     noMatch();
-  //   }
-  // }
+
   if (cardsOpen.length == 2) {
     if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
         theyMatch();
