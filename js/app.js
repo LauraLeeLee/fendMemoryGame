@@ -3,17 +3,22 @@
  * Create a list that holds all of your cards
  */
  const deck = document.querySelector('.deck'); //ul- holder of cards
- let card= document.getElementsByClassName('card');
- // creates array of cards using spread.
- let cards = [...card];
+ // let card= document.getElementsByClassName('card');
 
+ // creates array of cards using spread.
+ let cardType = ['fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-paper-plane-o'];
+ let cards =[];
+ let fullDeck = [];
+ let card;
  let star1 = document.querySelector('.one');
  let star2 = document.querySelector('.two');
  let star3 = document.querySelector('.three');
+ let starTally;
  let counter =document.getElementsByClassName('moves');
  let modal = document.getElementById('modal');
  let score = 0;
  let matchedSets = 0;
+ //variable to check if game has started
  let gameStarted = false;
  let timeCount;
  let currentTime;
@@ -24,6 +29,15 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+function makeCards(cardType) {
+  for(let i = 0; i < cardType.length; i++) {
+    cards.push(card);
+  }
+  console.log(cards);
+  fullDeck = [...cards, ...cards];
+  console.log(fullDeck);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -42,17 +56,19 @@ function shuffle(array) {
 
 //function to start game shuffling cards randomly
 function startGame() {
-  let cardsShuffled = shuffle(cards); //an array
+  let cardsShuffled = shuffle(fullDeck); //an array
   for(let i = 0; i < cardsShuffled.length; i++){
-    deck.appendChild(cardsShuffled[i]);
+    deck.appendChild(`<li class="card"><i class="fa ${card}"></i></li>`);
+  }
     score = 0;
     counter[0].innerHTML = 0;
     timer.innerHTML = '0:00:00';
+    clearInterval(timeCount);
     star3.style.visibility = 'visible';
     star2.style.visibility = 'visible';
     star1.style.visibility = 'visible';
     matchedSets = 0;
-  }
+
 }
 
 let restart = document.getElementsByClassName('restart');
@@ -87,9 +103,11 @@ deck.addEventListener('click', function(event){
   }
   showCard();
   openedCards();
+  // console.dir(event.target.className);
 });
 
 function showCard() {
+  console.dir(event.target);
   if((event.target.className === 'card') && (cardsOpen.length<2)){
     event.target.classList.toggle('open');
     event.target.classList.toggle('show');
@@ -164,19 +182,28 @@ function moveCounter() {
 
 //star rating determined by how many clicks used to win game
 function starRating() {
+
   if((score > 9) && (score <= 16)) {
     star3.style.visibility = 'hidden';
+    starTally = 2;
   }
   if((score >16) && (score <=28)) {
   star3.style.visibility = 'hidden';
   star2.style.visibility = 'hidden';
+  tarTally = 1;
   }
   if(score >28) {
     star3.style.visibility = 'hidden';
     star2.style.visibility = 'hidden';
     star1.style.visibility = 'hidden';
+    starTally = 0;
   }
 }
+
+// function renderStars(starTally){
+//   let stars = document.querySelector('.fa-star');
+//
+// }
 
 /*function to check if game has been won- all cards matched */
 function winGame() {
@@ -191,7 +218,7 @@ function winGame() {
       finalTime.innerHTML = 'You matched all cards in ' + currentTime;
       let starRate = document.createElement('h3');
       starRate.classList.add('star-rate')
-      starRate.innerHTML = 'Your star rating was ';
+      starRate.innerHTML = 'Your star rating was ' + starTally;
       modalHeader.appendChild(winScore);
       modalHeader.appendChild(starRate);
       modalHeader.appendChild(finalTime);
