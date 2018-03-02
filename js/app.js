@@ -10,8 +10,8 @@
  let cardType = ['fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-paper-plane-o'];
  let cards =[];
  let fullDeck = [];
- let card;
- let cardImage;
+ let cardEl;
+ let cardImageEl;
  let star1 = document.querySelector('.one');
  let star2 = document.querySelector('.two');
  let star3 = document.querySelector('.three');
@@ -33,6 +33,8 @@
  */
 
 function makeCards(array) {
+  cards =[];
+  fullDeck = [];
   for(let i = 0; i < array.length; i++) {
     cards.push(array[i]);
   }
@@ -42,17 +44,17 @@ function makeCards(array) {
 }
 
 function renderCardsToGame() {
+  deck.innerHTML ='';
   let cardsShuffled = shuffle(fullDeck); //an array
   //appends shuffled cards to the game board(deck)
   for(let i = 0; i < cardsShuffled.length; i++){
    // let liCard = `<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`;
-    card = document.createElement('li');
-    card.classList.add('card');
-    cardImage = document.createElement('i');
-    cardImage.classList.add('fa');
-    card.appendChild(cardImage);
-    deck.appendChild(card);
-
+    cardEl = document.createElement('li');
+    cardEl.classList.add('card');
+    cardImageEl = document.createElement('i');
+    cardImageEl.classList.add('fa', cardsShuffled[i]);
+    cardEl.appendChild(cardImageEl);
+    deck.appendChild(cardEl);
   }
   console.log(cardsShuffled);
 }
@@ -131,7 +133,8 @@ function showCard() {
 }
 
 function removeMatch() {
-  cards.forEach(function(item){
+  cardsOpen.forEach(function(item){
+    console.dir(item);
     item.classList.remove('match', 'match-grow');
     console.log(item);
     console.log('match classes removed?');
