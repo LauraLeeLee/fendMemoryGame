@@ -24,6 +24,7 @@
  let gameStarted = false;
  let timeCount;
  let currentTime;
+ let cardsShuffled;
 
 /*
  * Display the cards on the page
@@ -38,14 +39,12 @@ function makeCards(array) {
   for(let i = 0; i < array.length; i++) {
     cards.push(array[i]);
   }
-  console.log(cards);
   fullDeck = [...cards, ...cards];
-  console.log(fullDeck);
 }
 
 function renderCardsToGame() {
   deck.innerHTML ='';
-  let cardsShuffled = shuffle(fullDeck); //an array
+  cardsShuffled = shuffle(fullDeck); //an array
   //appends shuffled cards to the game board(deck)
   for(let i = 0; i < cardsShuffled.length; i++){
    // let liCard = `<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`;
@@ -56,7 +55,20 @@ function renderCardsToGame() {
     cardEl.appendChild(cardImageEl);
     deck.appendChild(cardEl);
   }
-  console.log(cardsShuffled);
+
+  //adds event listener to all cards
+  cardsShuffled.forEach(function(card){
+    addEventListener('click', function(event){
+    // check for game start on first click
+      if (!gameStarted) {
+        gameStarted = true;
+        stopWatch();
+      }
+      showCard();
+      openedCards();
+      // console.dir(event.target.className);
+    });
+  });
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -111,23 +123,11 @@ window.onload = startGame();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-//adds event listener to all cards
-deck.addEventListener('click', function(event){
-  // check for game start on first click
-  if (!gameStarted) {
-    gameStarted = true;
-    stopWatch();
-  }
-  showCard();
-  openedCards();
-  // console.dir(event.target.className);
-});
-
 function showCard() {
-  console.dir(event.target);
-  if((event.target.className === 'card') && (cardsOpen.length<2)){
-    event.target.classList.toggle('open');
-    event.target.classList.toggle('show');
+  console.dir(cardEl);
+  if((cardEl.className === 'card') && (cardsOpen.length<2)){
+    cardEl.classList.toggle('open');
+    cardEl.classList.toggle('show');
     moveCounter();
   }
 }
@@ -144,8 +144,7 @@ function removeMatch() {
 // let cardImage = document.getElementsByTagName('i');
 let cardsOpen= [];
 function openedCards() {
-  cardsOpen.push(event.target);
-  // console.dir(event.target);
+  cardsOpen.push(cardEl);
   // if (cardsOpen.length == 1) {
   //   if(cardsOpen[0].firstElementChild.className === cardsOpen[0].firstElementChild.className) {
   //     noMatch();
@@ -243,7 +242,6 @@ function winGame() {
       clearInterval(timeCount);
       modal.style.visibility = 'visible';
       console.log('you win!');
-      console.log(cards);
     }
   }, 1000);
 }
