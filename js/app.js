@@ -58,7 +58,7 @@ function shuffle(array) {
 function startGame() {
   let cardsShuffled = shuffle(fullDeck); //an array
   for(let i = 0; i < cardsShuffled.length; i++){
-    deck.appendChild(`<li class="card"><i class="fa ${card}"></i></li>`);
+    deck.appendChild(`<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`);
   }
     score = 0;
     counter[0].innerHTML = 0;
