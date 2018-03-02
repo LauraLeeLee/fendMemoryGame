@@ -49,6 +49,7 @@ function renderCardsToGame() {
     card = document.createElement('li');
     card.classList.add('card');
     cardImage = document.createElement('i');
+    cardImage.classList.add('fa');
     card.appendChild(cardImage);
     deck.appendChild(card);
 
