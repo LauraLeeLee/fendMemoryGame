@@ -3,6 +3,7 @@
  * Create a list that holds all of your cards
  */
  const deck = document.querySelector('.deck'); //ul- holder of cards
+
  // let card= document.getElementsByClassName('card');
 
  // creates array of cards using spread.
@@ -30,13 +31,23 @@
  *   - add each card's HTML to the page
  */
 
-function makeCards(cardType) {
-  for(let i = 0; i < cardType.length; i++) {
-    cards.push(card);
+function makeCards(array) {
+  for(let i = 0; i < array.length; i++) {
+    cards.push(array[i]);
   }
   console.log(cards);
   fullDeck = [...cards, ...cards];
   console.log(fullDeck);
+}
+
+function renderCardsToGame() {
+  let cardsShuffled = shuffle(fullDeck); //an array
+  //appends shuffled cards to the game board(deck)
+  for(let i = 0; i < cardsShuffled.length; i++){
+    // let liCard = `<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`;
+    deck.appendChild(`<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`);
+  }
+  console.log(cardsShuffled);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -56,10 +67,8 @@ function shuffle(array) {
 
 //function to start game shuffling cards randomly
 function startGame() {
-  let cardsShuffled = shuffle(fullDeck); //an array
-  for(let i = 0; i < cardsShuffled.length; i++){
-    deck.appendChild(`<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`);
-  }
+    makeCards(cardType);
+    renderCardsToGame();
     score = 0;
     counter[0].innerHTML = 0;
     timer.innerHTML = '0:00:00';
@@ -68,7 +77,6 @@ function startGame() {
     star2.style.visibility = 'visible';
     star1.style.visibility = 'visible';
     matchedSets = 0;
-
 }
 
 let restart = document.getElementsByClassName('restart');
