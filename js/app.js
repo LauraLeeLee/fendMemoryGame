@@ -24,7 +24,7 @@
  let gameStarted = false;
  let timeCount;
  let currentTime;
- let cardsShuffled;
+ let cardsShuffled = [];
 
 /*
  * Display the cards on the page
@@ -45,29 +45,33 @@ function makeCards(array) {
 function renderCardsToGame() {
   deck.innerHTML ='';
   cardsShuffled = shuffle(fullDeck); //an array
+  console.log(cardsShuffled);
   //appends shuffled cards to the game board(deck)
   for(let i = 0; i < cardsShuffled.length; i++){
-   // let liCard = `<li class="card"><i class="fa ${cardsShuffled[i]}"></i></li>`;
     cardEl = document.createElement('li');
     cardEl.classList.add('card');
     cardImageEl = document.createElement('i');
     cardImageEl.classList.add('fa', cardsShuffled[i]);
     cardEl.appendChild(cardImageEl);
     deck.appendChild(cardEl);
+
     //adds event listener to all cards
-    cardEl.addEventListener('click', function(event){
-      // check for game start on first click
-        if (!gameStarted) {
-          gameStarted = true;
-          stopWatch();
-        }
-        showCard();
-        openedCards();
-        // console.dir(event.target.className);
-    });
+    cardEl.addEventListener('click', clickResponse);
   }
 }
 console.log(cardsShuffled);
+
+//function to manage what happens for the click event to cards
+function clickResponse() {
+  const card = this;
+  // check for game start on first click
+  if (!gameStarted) {
+    gameStarted = true;
+    stopWatch();
+  }
+  showCard(card);
+  openedCards(card);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -80,8 +84,8 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-    return array;
     console.log("shuffled");
+    return array;
   }
 
 //function to start game shuffling cards randomly
@@ -151,6 +155,7 @@ function openedCards() {
         noMatch();
       }
   }
+  console.log(cardsOpen);
 }
 
 function theyMatch() {
