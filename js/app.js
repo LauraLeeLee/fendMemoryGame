@@ -125,11 +125,11 @@ window.onload = startGame();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-function showCard() {
+function showCard(card) {
   console.dir(cardEl);
-  if((cardEl.className === 'card') && (cardsOpen.length<2)){
-    cardEl.classList.toggle('open');
-    cardEl.classList.toggle('show');
+  if((card.className === 'card') && (cardsOpen.length<2)){
+    card.classList.toggle('open');
+    card.classList.toggle('show');
     moveCounter();
   }
 }
