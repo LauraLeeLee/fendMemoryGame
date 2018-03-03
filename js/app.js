@@ -140,7 +140,7 @@ function removeMatch() {
   cardsOpen.forEach(function(item){
     console.dir(item);
     item.classList.remove('match', 'match-grow');
-    // item.addEventListener('click', clickResponse);
+    item.addEventListener('click', clickResponse);
     console.log(item);
     console.log('match classes removed?');
   });
@@ -160,7 +160,7 @@ function openedCards(card) {
         theyMatch();
       } else {
         noMatch();
-      }     
+      }
   }
   console.log(cardsOpen);
 }
