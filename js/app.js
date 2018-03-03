@@ -34,12 +34,13 @@
  */
 
 function makeCards(array) {
-  cards =[];
+  // cards =[];
   fullDeck = [];
   for(let i = 0; i < array.length; i++) {
-    cards.push(array[i]);
+    fullDeck.push(array[i]);
   }
-  fullDeck = [...cards, ...cards];
+  //doubles the creation of each card image
+  fullDeck = [...fullDeck, ...fullDeck];
 }
 
 function renderCardsToGame() {
@@ -50,6 +51,7 @@ function renderCardsToGame() {
   for(let i = 0; i < cardsShuffled.length; i++){
     cardEl = document.createElement('li');
     cardEl.classList.add('card');
+    cardEl.id = "card-" + i;
     cardImageEl = document.createElement('i');
     cardImageEl.classList.add('fa', cardsShuffled[i]);
     cardEl.appendChild(cardImageEl);
@@ -59,7 +61,6 @@ function renderCardsToGame() {
     cardEl.addEventListener('click', clickResponse);
   }
 }
-console.log(cardsShuffled);
 
 //function to manage what happens for the click event to cards
 function clickResponse() {
@@ -92,6 +93,7 @@ function shuffle(array) {
 function startGame() {
     makeCards(cardType);
     renderCardsToGame();
+    gameStarted = false;
     score = 0;
     counter[0].innerHTML = 0;
     timer.innerHTML = '0:00:00';
@@ -126,7 +128,7 @@ window.onload = startGame();
  */
 
 function showCard(card) {
-  console.dir(cardEl);
+  console.dir(card);
   if((card.className === 'card') && (cardsOpen.length<2)){
     card.classList.toggle('open');
     card.classList.toggle('show');
@@ -138,6 +140,7 @@ function removeMatch() {
   cardsOpen.forEach(function(item){
     console.dir(item);
     item.classList.remove('match', 'match-grow');
+    item.addEventListener('click', clickResponse);
     console.log(item);
     console.log('match classes removed?');
   });
@@ -145,15 +148,20 @@ function removeMatch() {
 
 // let cardImage = document.getElementsByTagName('i');
 let cardsOpen= [];
-function openedCards() {
-  cardsOpen.push(cardEl);
+function openedCards(card) {
+  card.removeEventListener('click', clickResponse);
+  cardsOpen.push(card);
 
   if (cardsOpen.length == 2) {
-    if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
-        theyMatch();
-      } else {
-        noMatch();
-      }
+    if(cardsOpen[0].id !== cardsOpen[1].id){
+      if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
+          theyMatch();
+        } else {
+          noMatch();
+        }
+    } else{
+      noMatch();
+    }
   }
   console.log(cardsOpen);
 }
@@ -163,6 +171,7 @@ function theyMatch() {
     cardsOpen[1].classList.add('match', 'match-grow');
     cardsOpen[0].classList.remove('show', 'open');
     cardsOpen[1].classList.remove('show', 'open');
+
     console.log(cardsOpen);
     cardsOpen = [];
     matchedSets++;
