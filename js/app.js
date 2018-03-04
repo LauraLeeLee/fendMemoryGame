@@ -138,19 +138,18 @@ function showCard(card) {
 
 function removeMatch() {
   cardsOpen.forEach(function(item){
-    console.dir(item);
     item.classList.remove('match', 'match-grow');
     item.addEventListener('click', clickResponse);
     console.log(item);
-    console.log('match classes removed?');
   });
 }
 
 // let cardImage = document.getElementsByTagName('i');
 let cardsOpen= [];
 function openedCards(card) {
-  card.removeEventListener('click', clickResponse);
+
   cardsOpen.push(card);
+  card.removeEventListener('click', clickResponse);
 
   if (cardsOpen.length == 2) {
     if(cardsOpen[0].id === cardsOpen[1].id){
@@ -162,7 +161,7 @@ function openedCards(card) {
         noMatch();
       }
   }
-  console.log(cardsOpen);
+  // console.log(cardsOpen);
 }
 
 function theyMatch() {
@@ -171,7 +170,7 @@ function theyMatch() {
     cardsOpen[0].classList.remove('show', 'open');
     cardsOpen[1].classList.remove('show', 'open');
 
-    console.log(cardsOpen);
+    console.dir(cardsOpen);
     cardsOpen = [];
     matchedSets++;
     winGame();
@@ -184,8 +183,8 @@ function theyMatch() {
 function noMatch() {
   cardsOpen[0].classList.add('no-match', 'no-match-shake');
   cardsOpen[1].classList.add('no-match', 'no-match-shake');
-  cardsOpen[0].addEventListener('click', clickResponse);
-  cardsOpen[1].addEventListener('click', clickResponse);
+
+  console.dir(cardsOpen[0], cardsOpen[1]);
   noMatchFlip();
 }
 
@@ -195,8 +194,10 @@ function noMatchFlip() {
       cardsOpen[1].classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].classList.remove('show', 'open');
       cardsOpen[1].classList.remove('show', 'open');
+      cardsOpen[0].addEventListener('click', clickResponse);
+      cardsOpen[1].addEventListener('click', clickResponse);
       cardsOpen = [];
-    }, 1000);
+    }, 750);
 }
 
 //function to increment move counter, called in eventListener for card click
