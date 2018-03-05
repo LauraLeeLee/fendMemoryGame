@@ -1,4 +1,4 @@
-body, h1, h2, h3, div {
+body, h1, h2, h3, div, button, span {
   margin: 0;
   padding: 0;
 }
@@ -36,8 +36,12 @@ body {
 h1 {
     font-family: 'Chivo', sans-serif;
     font-weight: 700;
-    font-size: 4em;
+    font-size: 3.5em;
+    /* background: linear-gradient(to bottom, #ff3300 0%, #ffff00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
     color: #ff6600;
+    text-shadow: 2px 2px 4px #fff;
 }
 
 /*
@@ -61,9 +65,9 @@ h1 {
   .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    /* background: #2e3d49; */
     font-size: 0;
-    color: #ffffff;
+    color: #fff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -71,9 +75,26 @@ h1 {
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
+.front-card {
+  background: #2e3d49;
+  background-image: url(../img/orange.jpg);
+}
+
+/* .back-card {
+  font-size: 0;
+  color: #fff;
+  transform: rotateY(-180deg);
+}
+
+.back-card, .front-card {
+  -webkit-transition: -webkit-transform 0.25s;
+  transition: transform 0.25s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+} */
 
 .deck .card.open {
-    transform: rotateY(0deg);
+    /* transform: rotateY(0deg); */
     background: #02b3e4;
     cursor: default;
 }
@@ -82,9 +103,20 @@ h1 {
     font-size: 33px;
 }
 
+/* flip effect */
+/* .flip .front-card {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+.flip .back-card {
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
+} */
+
 .deck .card.match {
     cursor: default;
-    background: #ffff99;
+    background: #ffff66;
     color: #000;
     font-size: 33px;
 }
@@ -119,23 +151,22 @@ h1 {
 }
 
 @-webkit-keyframes grow {
-  from { transform: none; }
+  from {transform: none;}
   10% {transform: rotate(10deg);}
-  50% { transform: scale(2); }
+  50% {transform: scale(2); }
   60% {transform: rotate(-10deg);}
-  to { transform: none; }
+  to {transform: none;}
 }
 
 /*
  * Styles for the Score Panel
  */
 .score-panel {
-  color: #000099;
+    color: #000099;
     font-size: 1.5em;
-    text-align: left;
-    width: 345px;
-    margin-bottom: 20px;
-    border: 1px solid red;
+    text-align: center;
+    width: 85%;
+    background: linear-gradient(to bottom, #ffff00 0%, #ff3300 100%);
 }
 
 .score-panel .stars {
@@ -143,7 +174,6 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
-    border: 1px solid red;
 }
 
 .score-panel .stars li {
@@ -152,15 +182,20 @@ h1 {
 }
 
 .score-panel .restart {
-    float: right;
+    display: inline-block;
     cursor: pointer;
-    border: 1px solid red;
 }
 
 /*styles for timer  */
+#timer {
+  margin-left: 2px;
+}
+
 #timer, #stop-watch {
+  display: inline-block;
   font-size: 1em;
   color: #000099;
+  margin: 0 15px 0 15px;
 }
 
 /* styles for the modal */
@@ -170,6 +205,7 @@ h1 {
   justify-content: center;
   align-content: center;
   text-align: center;
+  color: #0066ff;
   margin: 0 auto 0;
   visibility: hidden;
   z-index: 9;
@@ -177,15 +213,17 @@ h1 {
   bottom: 540px;
   width: 500px;
   height: 300px;
-  background-color: #ffffe6;
-  border: 25px double #000099;
+  background: linear-gradient(to bottom, #ffff00 0%, #ff3300 100%);
+  border: 25px ridge #0066ff;
 }
 
 button {
   align-self: center;
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   border-radius: 60px;
+  background-color: #0066ff;
+  color: #fff;
 }
 
 .win-score, .final-time, .star-rate {

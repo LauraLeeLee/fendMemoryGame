@@ -11,13 +11,15 @@
  let cards =[];
  let fullDeck = [];
  let cardEl;
- let cardImageEl;
+ let backImageEl;
+ let frontImageEl;
  let star1 = document.querySelector('.one');
  let star2 = document.querySelector('.two');
  let star3 = document.querySelector('.three');
  let starTally;
  let counter =document.getElementsByClassName('moves');
  let modal = document.getElementById('modal');
+ let timer = document.getElementById('stop-watch');
  let score = 0;
  let matchedSets = 0;
  //variable to check if game has started
@@ -52,9 +54,12 @@ function renderCardsToGame() {
     cardEl = document.createElement('li');
     cardEl.classList.add('card');
     cardEl.id = "card-" + i;
-    cardImageEl = document.createElement('i');
-    cardImageEl.classList.add('fa', cardsShuffled[i]);
-    cardEl.appendChild(cardImageEl);
+    frontImageEl = document.createElement('i');
+    frontImageEl.classList.add('front-card', cardsShuffled[i]);
+    backImageEl = document.createElement('i');
+    backImageEl.classList.add('fa', 'back-card', cardsShuffled[i]);
+    cardEl.appendChild(frontImageEl);
+    cardEl.appendChild(backImageEl);
     deck.appendChild(cardEl);
 
     //adds event listener to all cards
@@ -71,7 +76,7 @@ function clickResponse() {
     stopWatch();
   }
   showCard(card);
-  openedCards(card);
+  console.log(card);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -130,9 +135,13 @@ window.onload = startGame();
 function showCard(card) {
   console.dir(card);
   if((card.className === 'card') && (cardsOpen.length<2)){
+    // card.classList.add('flip');
     card.classList.toggle('open');
     card.classList.toggle('show');
+    // card.classList.remove('back-card');
+    // card.classList.add('front-card');
     moveCounter();
+    openedCards(card);
   }
 }
 
@@ -183,7 +192,6 @@ function theyMatch() {
 function noMatch() {
   cardsOpen[0].classList.add('no-match', 'no-match-shake');
   cardsOpen[1].classList.add('no-match', 'no-match-shake');
-
   console.dir(cardsOpen[0], cardsOpen[1]);
   noMatchFlip();
 }
@@ -194,6 +202,10 @@ function noMatchFlip() {
       cardsOpen[1].classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].classList.remove('show', 'open');
       cardsOpen[1].classList.remove('show', 'open');
+      // cardsOpen[0].classList.remove('front-card');
+      // cardsOpen[1].classList.remove('front-card');
+      // cardsOpen[0].classList.add('back-card');
+      // cardsOpen[1].classList.add('back-card');
       cardsOpen[0].addEventListener('click', clickResponse);
       cardsOpen[1].addEventListener('click', clickResponse);
       cardsOpen = [];
@@ -256,12 +268,6 @@ function winGame() {
   }, 1000);
 }
 
-// function disable() {
-//   if(cardsOpen.length > 0) {
-//     cardsOpen[0]
-//   }
-// }
-
 /*code for timer */
 function stopWatch() {
   //extract time right now
@@ -299,7 +305,7 @@ function stopWatch() {
 // let seconds = 00;
 // let minutes = 00;
 // let hours = 0;
-// let timer = document.getElementById('timer');
+//
 //
 // function timerIncrements() {
 //     seconds++;
