@@ -100,7 +100,7 @@ function shuffle(array) {
       frontImageEl = document.createElement('i');
       frontImageEl.classList.add('front-card');
       backImageEl = document.createElement('i');
-      backImageEl.classList.add('back-card', 'fa', cardsShuffled[i]);
+      backImageEl.classList.add('fa', cardsShuffled[i], 'back-card');
       cardEl.appendChild(frontImageEl);
       cardEl.appendChild(backImageEl);
       deck.appendChild(cardEl);
@@ -142,10 +142,10 @@ function showCard(card) {
   // debugger;
   console.dir(card);
   if((card.className === 'card flip') && (cardsOpen.length<2)){
+    card.classList.remove('front-card');
     card.classList.toggle('open');
     card.classList.toggle('show');
-    // card.classList.add('back-card');
-    // card.classList.remove'front-card');
+
     moveCounter();
     openedCards(card);
   }
@@ -162,15 +162,15 @@ function removeMatch() {
 // let cardImage = document.getElementsByTagName('i');
 let cardsOpen= [];
 function openedCards(card) {
-
   cardsOpen.push(card);
   card.removeEventListener('click', clickResponse);
 
   if (cardsOpen.length == 2) {
+    console.log(cardsOpen[0].lastChild.className , cardsOpen[1].lastChild.className )
     if(cardsOpen[0].id === cardsOpen[1].id){
       noMatch();
     }
-    if(cardsOpen[0].firstElementChild.className === cardsOpen[1].firstElementChild.className) {
+    if(cardsOpen[0].lastChild.className === cardsOpen[1].lastChild.className) {
         theyMatch();
       } else {
         noMatch();
