@@ -75,8 +75,13 @@ function clickResponse() {
     gameStarted = true;
     stopWatch();
   }
+  flip(card);
   showCard(card);
   console.log(card);
+}
+
+function flip(card) {
+    card.classList.add('flip');
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -138,8 +143,8 @@ function showCard(card) {
     // card.classList.add('flip');
     card.classList.toggle('open');
     card.classList.toggle('show');
-    // card.classList.remove('back-card');
-    // card.classList.add('front-card');
+    // card.classList.add('back-card');
+    // card.classList.remove'front-card');
     moveCounter();
     openedCards(card);
   }

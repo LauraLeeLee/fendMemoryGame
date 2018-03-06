@@ -67,33 +67,57 @@ h1 {
     width: 125px;
     /* background: #2e3d49; */
     font-size: 0;
-    color: #fff;
+    /* color: #fff; */
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+
+    -webkit-transition: -webkit-transform 1s;
+   -moz-transition: -moz-transform 1s;
+   -o-transition: -o-transform 1s;
+   transition: transform 1s;
+   -webkit-transform-style: preserve-3d;
+   -moz-transform-style: preserve-3d;
+   -o-transform-style: preserve-3d;
+   transform-style: preserve-3d;
+   -webkit-transform-origin: 50% 50%;
 }
+
+/* img els that are descendents of the els with class card */
+.card img {
+  display: block;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 .front-card {
-  background: #2e3d49;
+  background: #ff6600;
   width: 100px;
   height: 100px;
   /* background-image: url(../img/orange.jpg); */
 }
 
-/* .back-card {
+ .back-card {
   font-size: 0;
   color: #fff;
-  transform: rotateY(-180deg);
+  -webkit-transform: rotateY( 180deg );
+   -moz-transform: rotateY( 180deg );
+   -o-transform: rotateY( 180deg );
+   transform: rotateY( 180deg );
 }
 
-.back-card, .front-card {
-  -webkit-transition: -webkit-transform 0.25s;
-  transition: transform 0.25s;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-} */
+/* flip effect */
+.card.flip{
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
 
 .deck .card.open {
     /* transform: rotateY(0deg); */
@@ -104,17 +128,6 @@ h1 {
 .deck .card.show {
     font-size: 33px;
 }
-
-/* flip effect */
-/* .flip .front-card {
-  -webkit-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
-}
-
-.flip .back-card {
-  -webkit-transform: rotateY(0);
-  transform: rotateY(0);
-} */
 
 .deck .card.match {
     cursor: default;
