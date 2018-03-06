@@ -100,7 +100,7 @@ function shuffle(array) {
       frontImageEl = document.createElement('i');
       frontImageEl.classList.add('front-card');
       backImageEl = document.createElement('i');
-      backImageEl.classList.add('fa', cardsShuffled[i], 'back-card');
+      backImageEl.classList.add('fa', cardsShuffled[i], 'back-card', 'toggle-view');
       cardEl.appendChild(frontImageEl);
       cardEl.appendChild(backImageEl);
       deck.appendChild(cardEl);
@@ -139,12 +139,13 @@ function flip(card) {
 }
 
 function showCard(card) {
-  // debugger;
   console.dir(card);
   if((card.className === 'card flip') && (cardsOpen.length<2)){
     card.classList.remove('front-card');
     card.classList.toggle('open');
     card.classList.toggle('show');
+    // card.lastChild.toggle('toggle-view');
+    // card.firstChild.add('toggle-view');
 
     moveCounter();
     openedCards(card);
@@ -190,9 +191,6 @@ function theyMatch() {
     matchedSets++;
     winGame();
   console.log('matchedSets: ' + matchedSets);
-  // cardsOpen.forEach(function(item){
-  //   item.removeEventListener('click', function(event));
-  // });
 }
 
 function noMatch() {
@@ -204,6 +202,7 @@ function noMatch() {
 
 function noMatchFlip() {
     setTimeout(function(){
+      
       cardsOpen[0].classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].classList.remove('show', 'open');
