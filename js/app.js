@@ -28,77 +28,6 @@
  let currentTime;
  let cardsShuffled = [];
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-function makeCards(array) {
-  // cards =[];
-  fullDeck = [];
-  for(let i = 0; i < array.length; i++) {
-    fullDeck.push(array[i]);
-  }
-  //doubles the creation of each card image
-  fullDeck = [...fullDeck, ...fullDeck];
-}
-
-function renderCardsToGame() {
-  deck.innerHTML ='';
-  cardsShuffled = shuffle(fullDeck); //an array
-  console.log(cardsShuffled);
-  //appends shuffled cards to the game board(deck)
-  for(let i = 0; i < cardsShuffled.length; i++){
-    cardEl = document.createElement('li');
-    cardEl.classList.add('card');
-    cardEl.id = "card-" + i;
-    frontImageEl = document.createElement('i');
-    frontImageEl.classList.add('front-card', cardsShuffled[i]);
-    backImageEl = document.createElement('i');
-    backImageEl.classList.add('fa', 'back-card', cardsShuffled[i]);
-    cardEl.appendChild(frontImageEl);
-    cardEl.appendChild(backImageEl);
-    deck.appendChild(cardEl);
-
-    //adds event listener to all cards
-    cardEl.addEventListener('click', clickResponse);
-  }
-}
-
-//function to manage what happens for the click event to cards
-function clickResponse() {
-  const card = this;
-  // check for game start on first click
-  if (!gameStarted) {
-    gameStarted = true;
-    stopWatch();
-  }
-  flip(card);
-  showCard(card);
-  console.log(card);
-}
-
-function flip(card) {
-    card.classList.add('flip');
-}
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    console.log("shuffled");
-    return array;
-  }
-
 //function to start game shuffling cards randomly
 function startGame() {
     makeCards(cardType);
@@ -126,21 +55,93 @@ let restarts = [...restart];
 
 //starts game on window load/reload
 window.onload = startGame();
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    console.log("shuffled");
+    return array;
+  }
+
+  /*
+   * Display the cards on the page
+   *   - shuffle the list of cards using the provided "shuffle" method below
+   *   - loop through each card and create its HTML
+   *   - add each card's HTML to the page
+   */
+
+  function makeCards(array) {
+    // cards =[];
+    fullDeck = [];
+    for(let i = 0; i < array.length; i++) {
+      fullDeck.push(array[i]);
+    }
+    //doubles the creation of each card image
+    fullDeck = [...fullDeck, ...fullDeck];
+  }
+
+  function renderCardsToGame() {
+    deck.innerHTML ='';
+    cardsShuffled = shuffle(fullDeck); //an array
+    console.log(cardsShuffled);
+    //appends shuffled cards to the game board(deck)
+    for(let i = 0; i < cardsShuffled.length; i++){
+      cardEl = document.createElement('li');
+      cardEl.classList.add('card');
+      cardEl.id = "card-" + i;
+      frontImageEl = document.createElement('i');
+      frontImageEl.classList.add('front-card');
+      backImageEl = document.createElement('i');
+      backImageEl.classList.add('back-card', 'fa', cardsShuffled[i]);
+      cardEl.appendChild(frontImageEl);
+      cardEl.appendChild(backImageEl);
+      deck.appendChild(cardEl);
+
+      //adds event listener to all cards
+      cardEl.addEventListener('click', clickResponse);
+    }
+  }
+
+  /*
+   * set up the event listener for a card. If a card is clicked:
+   *  - display the card's symbol (put this functionality in another function that you call from this one)
+   *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+   *  - if the list already has another card, check to see if the two cards match
+   *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+   *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+   *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+   *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+   */
+
+//function to manage what happens for the click event to cards
+function clickResponse() {
+  const card = this;
+  // check for game start on first click
+  if (!gameStarted) {
+    gameStarted = true;
+    stopWatch();
+  }
+  flip(card);
+  showCard(card);
+  console.log(card);
+}
+
+function flip(card) {
+    card.classList.add('flip');
+}
 
 function showCard(card) {
+  // debugger;
   console.dir(card);
-  if((card.className === 'card') && (cardsOpen.length<2)){
-    // card.classList.add('flip');
+  if((card.className === 'card flip') && (cardsOpen.length<2)){
     card.classList.toggle('open');
     card.classList.toggle('show');
     // card.classList.add('back-card');

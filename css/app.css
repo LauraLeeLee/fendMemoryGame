@@ -89,10 +89,7 @@ h1 {
 /* img els that are descendents of the els with class card */
 .card img {
   display: block;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
+
 }
 
 .front-card {
@@ -109,6 +106,11 @@ h1 {
    -moz-transform: rotateY( 180deg );
    -o-transform: rotateY( 180deg );
    transform: rotateY( 180deg );
+
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -o-backface-visibility: hidden;
+   backface-visibility: hidden;
 }
 
 /* flip effect */
