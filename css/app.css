@@ -77,7 +77,9 @@ h1 {
 }
 .front-card {
   background: #2e3d49;
-  background-image: url(../img/orange.jpg);
+  width: 100px;
+  height: 100px;
+  /* background-image: url(../img/orange.jpg); */
 }
 
 /* .back-card {
