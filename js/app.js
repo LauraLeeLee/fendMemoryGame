@@ -96,7 +96,7 @@ function shuffle(array) {
     //appends shuffled cards to the game board(deck)
     for(let i = 0; i < cardsShuffled.length; i++){
       cardEl = document.createElement('li');
-      cardEl.classList.add('card', 'flip');
+      cardEl.classList.add('card');
       cardEl.id = "card-" + i;
       frontImageEl = document.createElement('i');
       frontImageEl.classList.add('front-card');
@@ -135,10 +135,6 @@ function clickResponse() {
   console.log(card);
 }
 
-// function flip(card) {
-//
-// }
-
 function showCard(card) {
   console.dir(card);
   if((card.className === 'card flip') && (cardsOpen.length<2)){
@@ -164,6 +160,7 @@ function openedCards(card) {
   card.removeEventListener('click', clickResponse);
 
   if (cardsOpen.length == 2) {
+    console.log(cardsOpen[0], cardsOpen[1]);
     console.log(cardsOpen[0].lastChild.className , cardsOpen[1].lastChild.className )
     if(cardsOpen[0].id === cardsOpen[1].id){
       noMatch();
@@ -189,19 +186,22 @@ function theyMatch() {
 function noMatch() {
   cardsOpen[0].classList.add('no-match', 'no-match-shake');
   cardsOpen[1].classList.add('no-match', 'no-match-shake');
+  console.log(cardsOpen[0], cardsOpen[1]);
   noMatchFlip();
 }
 
 function noMatchFlip() {
     setTimeout(function(){
-      cardsOpen[0].classList.remove('flip');
-      cardsOpen[1].classList.remove('flip');
       cardsOpen[0].classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].classList.remove('no-match', 'no-match-shake');
+
       cardsOpen[0].firstChild.classList.remove('toggle-view');
       cardsOpen[0].lastChild.classList.add('toggle-view');
       cardsOpen[1].firstChild.classList.remove('toggle-view');
       cardsOpen[1].lastChild.classList.add('toggle-view');
+
+      cardsOpen[0].classList.remove('flip');
+      cardsOpen[1].classList.remove('flip');
       cardsOpen[0].addEventListener('click', clickResponse);
       cardsOpen[1].addEventListener('click', clickResponse);
       cardsOpen = [];
