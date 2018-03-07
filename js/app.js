@@ -109,18 +109,7 @@ function shuffle(array) {
       //adds event listener to all cards
       cardEl.addEventListener('click', clickResponse);
     }
-  }
-
-  /*
-   * set up the event listener for a card. If a card is clicked:
-   *  - display the card's symbol (put this functionality in another function that you call from this one)
-   *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-   *  - if the list already has another card, check to see if the two cards match
-   *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-   *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-   *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
-   *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-   */
+   }
 
 //function to manage what happens for the click event to cards
 function clickResponse() {
@@ -131,8 +120,8 @@ function clickResponse() {
     stopWatch();
   }
   card.classList.add('flip');
-  showCard(card);
   console.log(card);
+  showCard(card);
 }
 
 function showCard(card) {
@@ -158,7 +147,6 @@ let cardsOpen= [];
 function openedCards(card) {
   cardsOpen.push(card);
   card.removeEventListener('click', clickResponse);
-
   if (cardsOpen.length == 2) {
     console.log(cardsOpen[0], cardsOpen[1]);
     console.log(cardsOpen[0].lastChild.className , cardsOpen[1].lastChild.className )
@@ -175,8 +163,8 @@ function openedCards(card) {
 }
 
 function theyMatch() {
-    cardsOpen[0].classList.add('match', 'match-grow');
-    cardsOpen[1].classList.add('match', 'match-grow');
+    cardsOpen[0].lastChild.classList.add('match', 'match-grow');
+    cardsOpen[1].lastChild.classList.add('match', 'match-grow');
     console.dir(cardsOpen);
     cardsOpen = [];
     matchedSets++;
@@ -184,16 +172,16 @@ function theyMatch() {
 }
 
 function noMatch() {
-  cardsOpen[0].classList.add('no-match', 'no-match-shake');
-  cardsOpen[1].classList.add('no-match', 'no-match-shake');
+  cardsOpen[0].lastChild.classList.add('no-match', 'no-match-shake');
+  cardsOpen[1].lastChild.classList.add('no-match', 'no-match-shake');
   console.log(cardsOpen[0], cardsOpen[1]);
   noMatchFlip();
 }
 
 function noMatchFlip() {
     setTimeout(function(){
-      cardsOpen[0].classList.remove('no-match', 'no-match-shake');
-      cardsOpen[1].classList.remove('no-match', 'no-match-shake');
+      cardsOpen[0].lastChild.classList.remove('no-match', 'no-match-shake');
+      cardsOpen[1].lastChild.classList.remove('no-match', 'no-match-shake');
 
       cardsOpen[0].firstChild.classList.remove('toggle-view');
       cardsOpen[0].lastChild.classList.add('toggle-view');

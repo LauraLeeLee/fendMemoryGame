@@ -94,13 +94,19 @@ h1 {
 
 .front-card {
   background: #ff6600;
-  width: 100px;
-  height: 100px;
+  height: 125px;
+  width: 125px;
+  border-radius: 8px;
   /* background-image: url(../img/orange.jpg); */
 }
 
  .back-card {
   font-size: 33px;
+  text-align: center;
+  padding-top: 40px;
+  height: 125px;
+  width: 125px;
+  border-radius: 8px;
   color: #fff;
   background: #02b3e4;
   position: absolute;
@@ -136,7 +142,7 @@ h1 {
     font-size: 33px;
 } */
 
-.deck .card.match {
+.deck .back-card.match {
     cursor: default;
     background: #ffff66;
     color: #000;
