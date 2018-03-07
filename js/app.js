@@ -180,9 +180,6 @@ function openedCards(card) {
 function theyMatch() {
     cardsOpen[0].classList.add('match', 'match-grow');
     cardsOpen[1].classList.add('match', 'match-grow');
-    // card.firstChild.classList.add('toggle-view');
-    // card.lastChild.classList.remove('toggle-view');
-
     console.dir(cardsOpen);
     cardsOpen = [];
     matchedSets++;
