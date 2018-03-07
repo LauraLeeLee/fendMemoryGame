@@ -121,7 +121,9 @@ function clickResponse() {
   }
   card.classList.add('flip');
   console.log(card);
+  setTimeout(function() {
   showCard(card);
+}, 300);
 }
 
 function showCard(card) {
@@ -174,7 +176,7 @@ function theyMatch() {
 function noMatch() {
   cardsOpen[0].lastChild.classList.add('no-match', 'no-match-shake');
   cardsOpen[1].lastChild.classList.add('no-match', 'no-match-shake');
-  console.log(cardsOpen[0], cardsOpen[1]);
+  console.log(cardsOpen[0].lastChild, cardsOpen[1].lastChild);
   noMatchFlip();
 }
 

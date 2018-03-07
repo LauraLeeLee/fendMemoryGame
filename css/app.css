@@ -149,14 +149,14 @@ h1 {
     font-size: 33px;
 }
 
-.deck .card.no-match {
+.deck .back-card.no-match {
   background: #990000;
   /* transform: rotateY(-180deg); */
 }
 
 /*adds shake animation to cards not match  */
 .no-match-shake {
-  animation: shake 0.3s;
+  animation: shake 0.5s;
 }
 
 @keyframes shake {
