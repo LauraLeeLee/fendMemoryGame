@@ -100,8 +100,11 @@ h1 {
 }
 
  .back-card {
-  font-size: 0;
+  font-size: 33px;
   color: #fff;
+  background: #02b3e4;
+  position: absolute;
+  cursor: default;
   -webkit-transform: rotateY( 180deg );
    -moz-transform: rotateY( 180deg );
    -o-transform: rotateY( 180deg );
@@ -123,15 +126,15 @@ h1 {
     transform: rotateY( 180deg );
 }
 
-.deck .card.open {
-    /* transform: rotateY(0deg); */
+/* .deck .card.open {
+    transform: rotateY(0deg);
     background: #02b3e4;
     cursor: default;
-}
+} */
 
-.deck .card.show {
+/* .deck .card.show {
     font-size: 33px;
-}
+} */
 
 .deck .card.match {
     cursor: default;

@@ -27,6 +27,7 @@
  let timeCount;
  let currentTime;
  let cardsShuffled = [];
+ let endGame = document.getElementsByClassName('end-game');
 
 //function to start game shuffling cards randomly
 function startGame() {
@@ -95,7 +96,7 @@ function shuffle(array) {
     //appends shuffled cards to the game board(deck)
     for(let i = 0; i < cardsShuffled.length; i++){
       cardEl = document.createElement('li');
-      cardEl.classList.add('card');
+      cardEl.classList.add('card', 'flip');
       cardEl.id = "card-" + i;
       frontImageEl = document.createElement('i');
       frontImageEl.classList.add('front-card');
@@ -129,24 +130,20 @@ function clickResponse() {
     gameStarted = true;
     stopWatch();
   }
-  flip(card);
+  card.classList.add('flip');
   showCard(card);
   console.log(card);
 }
 
-function flip(card) {
-    card.classList.add('flip');
-}
+// function flip(card) {
+//
+// }
 
 function showCard(card) {
   console.dir(card);
   if((card.className === 'card flip') && (cardsOpen.length<2)){
-    card.classList.remove('front-card');
-    card.classList.toggle('open');
-    card.classList.toggle('show');
-    // card.lastChild.toggle('toggle-view');
-    // card.firstChild.add('toggle-view');
-
+    card.firstChild.classList.add('toggle-view');
+    card.lastChild.classList.remove('toggle-view');
     moveCounter();
     openedCards(card);
   }
@@ -183,34 +180,31 @@ function openedCards(card) {
 function theyMatch() {
     cardsOpen[0].classList.add('match', 'match-grow');
     cardsOpen[1].classList.add('match', 'match-grow');
-    cardsOpen[0].classList.remove('show', 'open');
-    cardsOpen[1].classList.remove('show', 'open');
+    // card.firstChild.classList.add('toggle-view');
+    // card.lastChild.classList.remove('toggle-view');
 
     console.dir(cardsOpen);
     cardsOpen = [];
     matchedSets++;
     winGame();
-  console.log('matchedSets: ' + matchedSets);
 }
 
 function noMatch() {
   cardsOpen[0].classList.add('no-match', 'no-match-shake');
   cardsOpen[1].classList.add('no-match', 'no-match-shake');
-  console.dir(cardsOpen[0], cardsOpen[1]);
   noMatchFlip();
 }
 
 function noMatchFlip() {
     setTimeout(function(){
-      
+      cardsOpen[0].classList.remove('flip');
+      cardsOpen[1].classList.remove('flip');
       cardsOpen[0].classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].classList.remove('no-match', 'no-match-shake');
-      cardsOpen[0].classList.remove('show', 'open');
-      cardsOpen[1].classList.remove('show', 'open');
-      // cardsOpen[0].classList.remove('front-card');
-      // cardsOpen[1].classList.remove('front-card');
-      // cardsOpen[0].classList.add('back-card');
-      // cardsOpen[1].classList.add('back-card');
+      cardsOpen[0].firstChild.classList.remove('toggle-view');
+      cardsOpen[0].lastChild.classList.add('toggle-view');
+      cardsOpen[1].firstChild.classList.remove('toggle-view');
+      cardsOpen[1].lastChild.classList.add('toggle-view');
       cardsOpen[0].addEventListener('click', clickResponse);
       cardsOpen[1].addEventListener('click', clickResponse);
       cardsOpen = [];
@@ -272,6 +266,10 @@ function winGame() {
     }
   }, 1000);
 }
+
+endGame[0].addEventListener('click', function(){
+  modal.innerHTML = '<h2>Thanks for playing!</h2>';
+});
 
 /*code for timer */
 function stopWatch() {
