@@ -119,7 +119,7 @@ function clickResponse() {
     gameStarted = true;
     stopWatch();
   }
-  card.classList.add('flip');
+
   console.log(card);
   setTimeout(function() {
   showCard(card);
@@ -127,8 +127,9 @@ function clickResponse() {
 }
 
 function showCard(card) {
+  card.classList.add('flip');
   console.dir(card);
-  if((card.className === 'card flip') && (cardsOpen.length<2)){
+  if((card.className === 'card') && (cardsOpen.length<2)){
     // card.firstChild.classList.add('toggle-view');
     // card.lastChild.classList.remove('toggle-view');
     moveCounter();
