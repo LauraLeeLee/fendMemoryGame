@@ -3,11 +3,18 @@
 <!-- * Live version here: (https://lauraleelee.github.io/fendMemoryGame/) -->
 
 ## Table of Contents
-
-* [Instructions](#instructions)
+* [How to Play](#How to Play)
+* [Details of Project](#Details of Project)
 * [Contributing](#contributing)
 
-## Instructions
+## How to Play
+* Click link above for live version
+* Object of the game is to match all the pairs of cards in the least
+  amount of moves in the least amount of time.
+* Click on a card to show card, click on another to find its match.  
+* Tests memory, builds cognitive functioning.  
+
+## Details of Project
 
 The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
@@ -16,8 +23,11 @@ To get started, open `js/app.js` and start building out the app's functionality
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
 ## Resources
-* Stopwatch exampled used to create timer.
-- [JSFiddle](https://jsfiddle.net/Daniel_Hug/pvk6p/)
+* Stopwatch example used to create timer.
+- [JSFiddle for timer](https://jsfiddle.net/Daniel_Hug/pvk6p/)
+* Card flip animation example used
+-[JSFiddle for flip](https://jsfiddle.net/james2doyle/qsQun/)
+
 
 ## Contributing
 

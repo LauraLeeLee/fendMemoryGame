@@ -1,15 +1,11 @@
 
-/*
- * Create a list that holds all of your cards
- */
- const deck = document.querySelector('.deck'); //ul- holder of cards
-
- // let card= document.getElementsByClassName('card');
+/* Create element that holds all of your cards  */
+/* ul- holder of cards */
+ const deck = document.querySelector('.deck');
 
  // creates array of cards using spread.
  let cardType = ['fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-paper-plane-o'];
- let cards =[],
-    fullDeck = [],
+ let fullDeck = [],
     cardEl,
     backImageEl,
     frontImageEl,
@@ -57,7 +53,8 @@ let restarts = [...restart];
 //starts game on window load/reload
 window.onload = startGame();
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/* Shuffle function from http://stackoverflow.com/a/2450976
+  shuffle the list of cards */
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -72,13 +69,7 @@ function shuffle(array) {
     return array;
   }
 
-  /*
-   * Display the cards on the page
-   *   - shuffle the list of cards using the provided "shuffle" method below
-   *   - loop through each card and create its HTML
-   *   - add each card's HTML to the page
-   */
-
+/* loop through each card and create its HTML */
   function makeCards(array) {
     // cards =[];
     fullDeck = [];
@@ -89,6 +80,7 @@ function shuffle(array) {
     fullDeck = [...fullDeck, ...fullDeck];
   }
 
+/* Display the cards on the page, add each card's HTML to the page */
   function renderCardsToGame() {
     deck.innerHTML ='';
     cardsShuffled = shuffle(fullDeck); //an array
@@ -119,19 +111,15 @@ function clickResponse() {
     gameStarted = true;
     stopWatch();
   }
-
-  console.log(card);
   setTimeout(function() {
   showCard(card);
 }, 200);
 }
 
+/* checks if a card is open and if openedCards is 2 or less */
 function showCard(card) {
-  console.dir(card);
   if((card.className === 'card') && (cardsOpen.length<2)){
     card.classList.add('flip');
-    // card.firstChild.classList.add('toggle-view');
-    // card.lastChild.classList.remove('toggle-view');
     moveCounter();
     openedCards(card);
   }
@@ -145,7 +133,9 @@ function removeMatch() {
   });
 }
 
-// let cardImage = document.getElementsByTagName('i');
+/* creats array to hold opened cards.
+ * checks open cards to make sure not same card
+ * and checks if the two cards match-same image*/
 let cardsOpen= [];
 function openedCards(card) {
   cardsOpen.push(card);
@@ -168,9 +158,9 @@ function openedCards(card) {
       }, 500);
       }
   }
-  // console.log(cardsOpen);
 }
 
+/* if the cards match, applies appropriate classes*/
 function theyMatch() {
     cardsOpen[0].classList.add('match', 'match-grow');
     cardsOpen[1].classList.add('match', 'match-grow');
@@ -185,6 +175,7 @@ function theyMatch() {
     winGame();
 }
 
+/* if no match, applies appropriate classes*/
 function noMatch() {
   cardsOpen[0].classList.add('no-match', 'no-match-shake');
   cardsOpen[1].classList.add('no-match', 'no-match-shake');
@@ -196,6 +187,8 @@ function noMatch() {
   noMatchFlip();
 }
 
+/* if no match, removes no match classes
+ * adds class to flip and readds click listener*/
 function noMatchFlip() {
     setTimeout(function(){
       cardsOpen[0].classList.remove('no-match', 'no-match-shake');
@@ -204,12 +197,6 @@ function noMatchFlip() {
       cardsOpen[1].lastChild.classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].firstChild.classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].firstChild.classList.remove('no-match', 'no-match-shake');
-
-      // cardsOpen[0].firstChild.classList.remove('toggle-view');
-      // cardsOpen[0].lastChild.classList.add('toggle-view');
-      // cardsOpen[1].firstChild.classList.remove('toggle-view');
-      // cardsOpen[1].lastChild.classList.add('toggle-view');
-
       cardsOpen[0].classList.remove('flip');
       cardsOpen[1].classList.remove('flip');
       cardsOpen[0].addEventListener('click', clickResponse);
@@ -244,11 +231,6 @@ function starRating() {
   }
 }
 
-// function renderStars(starTally){
-//   let stars = document.querySelector('.fa-star');
-//
-// }
-
 /*function to check if game has been won- all cards matched */
 function winGame() {
   setTimeout(function(){
@@ -275,6 +257,7 @@ function winGame() {
   }, 1000);
 }
 
+/*listener if option to not play again is chosen*/
 endGame[0].addEventListener('click', function(){
   modal.innerHTML = '<h2>Thanks for playing!</h2>';
 });

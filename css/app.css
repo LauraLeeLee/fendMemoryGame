@@ -41,11 +41,8 @@ h1 {
     text-shadow: 2px 2px 4px #fff;
 }
 
-/*
- * Styles for the deck of cards
- */
-
-.deck {
+/* Styles for the deck of cards */
+ .deck {
     width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
@@ -122,7 +119,7 @@ h1 {
 
 }
 
-/* flip effect */
+/* card flip effect */
 .card.flip{
     -webkit-transform: rotateY( 180deg );
     -moz-transform: rotateY( 180deg );
@@ -173,9 +170,7 @@ h1 {
   to {transform: none;}
 }
 
-/*
- * Styles for the Score Panel
- */
+/* Styles for the Score Panel */
 .score-panel {
     color: #000099;
     font-size: 1.5em;
@@ -213,7 +208,7 @@ h1 {
   margin: 0 15px 0 15px;
 }
 
-/* styles for the modal */
+/* styles for the win modal */
 #modal {
   display: flex;
   flex-direction: column;
