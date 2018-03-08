@@ -117,15 +117,15 @@ function clickResponse() {
   // debugger;
   const card = this;
   // check for game start on first click
-  // if (!gameStarted) {
-  //   gameStarted = true;
-  //   stopWatch();
-  // }
-  showCard(card);
+  if (!gameStarted) {
+    gameStarted = true;
+    stopWatch();
+  }
+
   console.log(card);
-//   setTimeout(function() {
-//
-// }, 300);
+  setTimeout(function() {
+  showCard(card);
+}, 300);
 }
 
 function showCard(card) {

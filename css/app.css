@@ -85,16 +85,17 @@ h1 {
    transform-style: preserve-3d;
    -webkit-transform-origin: 50% 50%;
 
-   -webkit-backface-visibility: hidden;
-   -moz-backface-visibility: hidden;
-   -o-backface-visibility: hidden;
-   backface-visibility: hidden;
+
 }
 
 /* img els that are descendents of the els with class card */
 .card img {
   display: block;
 
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -o-backface-visibility: hidden;
+   backface-visibility: hidden;
 }
 
 .front-card {
@@ -154,7 +155,6 @@ h1 {
 
 .deck .back-card.no-match {
   background: #990000;
-  /* transform: rotateY(-180deg); */
 }
 
 /*adds shake animation to cards not match  */
