@@ -3,8 +3,9 @@
 <!-- * Live version here: (https://lauraleelee.github.io/fendMemoryGame/) -->
 
 ## Table of Contents
-* [How to Play](#How to Play)
-* [Details of Project](#Details of Project)
+* [How to Play](#how to play)
+* [Introduction](#Introduction)
+* [Resources](#resources)
 * [Contributing](#contributing)
 
 ## How to Play
@@ -14,7 +15,7 @@
 * Click on a card to show card, click on another to find its match.  
 * Tests memory, builds cognitive functioning.  
 
-## Details of Project
+## Introduction
 
 The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
