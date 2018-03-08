@@ -8,26 +8,26 @@
 
  // creates array of cards using spread.
  let cardType = ['fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-paper-plane-o'];
- let cards =[];
- let fullDeck = [];
- let cardEl;
- let backImageEl;
- let frontImageEl;
- let star1 = document.querySelector('.one');
- let star2 = document.querySelector('.two');
- let star3 = document.querySelector('.three');
- let starTally;
- let counter =document.getElementsByClassName('moves');
- let modal = document.getElementById('modal');
- let timer = document.getElementById('stop-watch');
- let score = 0;
- let matchedSets = 0;
- //variable to check if game has started
- let gameStarted = false;
- let timeCount;
- let currentTime;
- let cardsShuffled = [];
- let endGame = document.getElementsByClassName('end-game');
+ let cards =[],
+    fullDeck = [],
+    cardEl,
+    backImageEl,
+    frontImageEl,
+    star1 = document.querySelector('.one'),
+    star2 = document.querySelector('.two'),
+    star3 = document.querySelector('.three'),
+    starTally,
+    counter =document.getElementsByClassName('moves'),
+    modal = document.getElementById('modal'),
+    timer = document.getElementById('stop-watch'),
+    score = 0,
+    matchedSets = 0,
+   //variable to check if game has started
+    gameStarted = false,
+    timeCount,
+    currentTime,
+    cardsShuffled = [],
+    endGame = document.getElementsByClassName('end-game');
 
 //function to start game shuffling cards randomly
 function startGame() {
@@ -129,8 +129,8 @@ function clickResponse() {
 function showCard(card) {
   console.dir(card);
   if((card.className === 'card flip') && (cardsOpen.length<2)){
-    card.firstChild.classList.add('toggle-view');
-    card.lastChild.classList.remove('toggle-view');
+    // card.firstChild.classList.add('toggle-view');
+    // card.lastChild.classList.remove('toggle-view');
     moveCounter();
     openedCards(card);
   }
@@ -165,8 +165,13 @@ function openedCards(card) {
 }
 
 function theyMatch() {
+    cardsOpen[0].classList.add('match', 'match-grow');
+    cardsOpen[1].classList.add('match', 'match-grow');
     cardsOpen[0].lastChild.classList.add('match', 'match-grow');
     cardsOpen[1].lastChild.classList.add('match', 'match-grow');
+
+    cardsOpen[0].firstChild.classList.add('match', 'match-grow');
+    cardsOpen[1].firstChild.classList.add('match', 'match-grow');
     console.dir(cardsOpen);
     cardsOpen = [];
     matchedSets++;
@@ -185,10 +190,10 @@ function noMatchFlip() {
       cardsOpen[0].lastChild.classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].lastChild.classList.remove('no-match', 'no-match-shake');
 
-      cardsOpen[0].firstChild.classList.remove('toggle-view');
-      cardsOpen[0].lastChild.classList.add('toggle-view');
-      cardsOpen[1].firstChild.classList.remove('toggle-view');
-      cardsOpen[1].lastChild.classList.add('toggle-view');
+      // cardsOpen[0].firstChild.classList.remove('toggle-view');
+      // cardsOpen[0].lastChild.classList.add('toggle-view');
+      // cardsOpen[1].firstChild.classList.remove('toggle-view');
+      // cardsOpen[1].lastChild.classList.add('toggle-view');
 
       cardsOpen[0].classList.remove('flip');
       cardsOpen[1].classList.remove('flip');
@@ -207,7 +212,6 @@ function moveCounter() {
 
 //star rating determined by how many clicks used to win game
 function starRating() {
-
   if((score > 9) && (score <= 16)) {
     star3.style.visibility = 'hidden';
     starTally = 2;
@@ -237,10 +241,12 @@ function winGame() {
       let modalHeader = document.getElementById('modal-header');
       let winScore = document.createElement('h3');
       let finalTime = document.createElement('h3');
+
       winScore.classList.add('win-score');
       finalTime.classList.add('final-time');
       winScore.innerHTML = 'You finished in ' + score + ' moves!';
       finalTime.innerHTML = 'You matched all cards in ' + currentTime;
+
       let starRate = document.createElement('h3');
       starRate.classList.add('star-rate')
       starRate.innerHTML = 'Your star rating was ' + starTally;
