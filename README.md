@@ -3,7 +3,7 @@
 <!-- * Live version here: (https://lauraleelee.github.io/fendMemoryGame/) -->
 
 ## Table of Contents
-* [How to Play](#how to play)
+* [How to Play](#howtoplay)
 * [Introduction](#Introduction)
 * [Resources](#resources)
 * [Contributing](#contributing)
