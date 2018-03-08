@@ -108,30 +108,27 @@ function shuffle(array) {
 
       //adds event listener to all cards
       cardEl.addEventListener('click', clickResponse);
-
     }
    }
 
 //function to manage what happens for the click event to cards
 function clickResponse() {
-  // debugger;
   const card = this;
   // check for game start on first click
   if (!gameStarted) {
     gameStarted = true;
     stopWatch();
   }
-
+  card.classList.add('flip');
   console.log(card);
   setTimeout(function() {
   showCard(card);
-}, 300);
+  }, 300);
 }
 
 function showCard(card) {
   console.dir(card);
-  if((card.className === 'card') && (cardsOpen.length<2)){
-    card.classList.add('flip');
+  if((card.className === 'card flip') && (cardsOpen.length<2)){
     // card.firstChild.classList.add('toggle-view');
     // card.lastChild.classList.remove('toggle-view');
     moveCounter();
@@ -181,17 +178,32 @@ function theyMatch() {
     winGame();
 }
 
+// function noMatch() {
+//   cardsOpen[0].lastChild.classList.add('no-match', 'no-match-shake');
+//   cardsOpen[1].lastChild.classList.add('no-match', 'no-match-shake');
+//   console.log(cardsOpen[0].lastChild, cardsOpen[1].lastChild);
+//   noMatchFlip();
+// }
+
 function noMatch() {
+  cardsOpen[0].classList.add('no-match', 'no-match-shake');
+  cardsOpen[1].classList.add('no-match', 'no-match-shake');
   cardsOpen[0].lastChild.classList.add('no-match', 'no-match-shake');
   cardsOpen[1].lastChild.classList.add('no-match', 'no-match-shake');
+  cardsOpen[0].firstChild.classList.add('no-match', 'no-match-shake');
+  cardsOpen[1].firstChild.classList.add('no-match', 'no-match-shake');
   console.log(cardsOpen[0].lastChild, cardsOpen[1].lastChild);
   noMatchFlip();
 }
 
 function noMatchFlip() {
     setTimeout(function(){
+      cardsOpen[0].classList.remove('no-match', 'no-match-shake');
+      cardsOpen[1].classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].lastChild.classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].lastChild.classList.remove('no-match', 'no-match-shake');
+      cardsOpen[0].firstChild.classList.add('no-match', 'no-match-shake');
+      cardsOpen[1].firstChild.classList.add('no-match', 'no-match-shake');
 
       // cardsOpen[0].firstChild.classList.remove('toggle-view');
       // cardsOpen[0].lastChild.classList.add('toggle-view');
