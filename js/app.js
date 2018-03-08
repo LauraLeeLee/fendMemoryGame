@@ -123,7 +123,7 @@ function clickResponse() {
   console.log(card);
   setTimeout(function() {
   showCard(card);
-  }, 300);
+}, 200);
 }
 
 function showCard(card) {
@@ -161,11 +161,11 @@ function openedCards(card) {
     if(cardsOpen[0].lastChild.className === cardsOpen[1].lastChild.className) {
         setTimeout(function() {
         theyMatch();
-        }, 300);
+      }, 500);
       } else {
         setTimeout(function() {
         noMatch();
-      }, 300);
+      }, 500);
       }
   }
   // console.log(cardsOpen);
