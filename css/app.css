@@ -85,10 +85,7 @@ h1 {
    transform-style: preserve-3d;
    -webkit-transform-origin: 50% 50%;
 
-   -webkit-backface-visibility: hidden;
-   -moz-backface-visibility: hidden;
-   -o-backface-visibility: hidden;
-   backface-visibility: hidden;
+
 
 }
 
@@ -102,7 +99,15 @@ h1 {
   height: 125px;
   width: 125px;
   border-radius: 8px;
+  transform: rotateY(0deg);
   /* background-image: url(../img/orange.jpg); */
+}
+
+.front-card, .back-card {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
  .back-card {

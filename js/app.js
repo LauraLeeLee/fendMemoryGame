@@ -85,7 +85,7 @@ function shuffle(array) {
     for(let i = 0; i < array.length; i++) {
       fullDeck.push(array[i]);
     }
-    //doubles the creation of each card image
+    //doubles the creation of each card image creating the full deck
     fullDeck = [...fullDeck, ...fullDeck];
   }
 
@@ -127,9 +127,9 @@ function clickResponse() {
 }
 
 function showCard(card) {
-  card.classList.add('flip');
   console.dir(card);
   if((card.className === 'card') && (cardsOpen.length<2)){
+    card.classList.add('flip');
     // card.firstChild.classList.add('toggle-view');
     // card.lastChild.classList.remove('toggle-view');
     moveCounter();
@@ -154,12 +154,18 @@ function openedCards(card) {
     console.log(cardsOpen[0], cardsOpen[1]);
     console.log(cardsOpen[0].lastChild.className , cardsOpen[1].lastChild.className )
     if(cardsOpen[0].id === cardsOpen[1].id){
+      setTimeout(function() {
       noMatch();
+      }, 300);
     }
     if(cardsOpen[0].lastChild.className === cardsOpen[1].lastChild.className) {
+        setTimeout(function() {
         theyMatch();
+        }, 300);
       } else {
+        setTimeout(function() {
         noMatch();
+      }, 300);
       }
   }
   // console.log(cardsOpen);
@@ -178,13 +184,6 @@ function theyMatch() {
     matchedSets++;
     winGame();
 }
-
-// function noMatch() {
-//   cardsOpen[0].lastChild.classList.add('no-match', 'no-match-shake');
-//   cardsOpen[1].lastChild.classList.add('no-match', 'no-match-shake');
-//   console.log(cardsOpen[0].lastChild, cardsOpen[1].lastChild);
-//   noMatchFlip();
-// }
 
 function noMatch() {
   cardsOpen[0].classList.add('no-match', 'no-match-shake');
