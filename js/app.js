@@ -108,27 +108,30 @@ function shuffle(array) {
 
       //adds event listener to all cards
       cardEl.addEventListener('click', clickResponse);
+
     }
    }
 
 //function to manage what happens for the click event to cards
 function clickResponse() {
+  // debugger;
   const card = this;
   // check for game start on first click
-  if (!gameStarted) {
-    gameStarted = true;
-    stopWatch();
-  }
-  card.classList.add('flip');
-  console.log(card);
-  setTimeout(function() {
+  // if (!gameStarted) {
+  //   gameStarted = true;
+  //   stopWatch();
+  // }
   showCard(card);
-}, 300);
+  console.log(card);
+//   setTimeout(function() {
+//
+// }, 300);
 }
 
 function showCard(card) {
   console.dir(card);
-  if((card.className === 'card flip') && (cardsOpen.length<2)){
+  if((card.className === 'card') && (cardsOpen.length<2)){
+    card.classList.add('flip');
     // card.firstChild.classList.add('toggle-view');
     // card.lastChild.classList.remove('toggle-view');
     moveCounter();
