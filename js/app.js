@@ -202,8 +202,8 @@ function noMatchFlip() {
       cardsOpen[1].classList.remove('no-match', 'no-match-shake');
       cardsOpen[0].lastChild.classList.remove('no-match', 'no-match-shake');
       cardsOpen[1].lastChild.classList.remove('no-match', 'no-match-shake');
-      cardsOpen[0].firstChild.classList.add('no-match', 'no-match-shake');
-      cardsOpen[1].firstChild.classList.add('no-match', 'no-match-shake');
+      cardsOpen[0].firstChild.classList.remove('no-match', 'no-match-shake');
+      cardsOpen[1].firstChild.classList.remove('no-match', 'no-match-shake');
 
       // cardsOpen[0].firstChild.classList.remove('toggle-view');
       // cardsOpen[0].lastChild.classList.add('toggle-view');
