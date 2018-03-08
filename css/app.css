@@ -84,6 +84,11 @@ h1 {
    -o-transform-style: preserve-3d;
    transform-style: preserve-3d;
    -webkit-transform-origin: 50% 50%;
+
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -o-backface-visibility: hidden;
+   backface-visibility: hidden;
 }
 
 /* img els that are descendents of the els with class card */
@@ -115,10 +120,7 @@ h1 {
    -moz-transform: rotateY( 180deg );
    -o-transform: rotateY( 180deg );
    transform: rotateY( 180deg );
-   -webkit-backface-visibility: hidden;
-   -moz-backface-visibility: hidden;
-   -o-backface-visibility: hidden;
-   backface-visibility: hidden;
+
 }
 
 .toggle-view {
