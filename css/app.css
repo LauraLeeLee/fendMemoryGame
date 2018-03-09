@@ -43,8 +43,8 @@ h1 {
 
 /* Styles for the deck of cards */
  .deck {
-    width: 660px;
-    min-height: 680px;
+    max-width: 660px;
+    max-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -59,9 +59,7 @@ h1 {
   .deck .card {
     height: 125px;
     width: 125px;
-    /* background: #2e3d49; */
     font-size: 0;
-    /* color: #fff; */
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -87,14 +85,14 @@ h1 {
 
 .front-card {
   background: #ff6600;
-  height: 125px;
-  width: 125px;
   border-radius: 8px;
   transform: rotateY(0deg);
   /* background-image: url(../img/orange.jpg); */
 }
 
 .front-card, .back-card {
+  height: 100%;
+  width: 100%;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -105,8 +103,6 @@ h1 {
   font-size: 33px;
   text-align: center;
   padding-top: 40px;
-  height: 125px;
-  width: 125px;
   border-radius: 8px;
   color: #fff;
   background: #02b3e4;
@@ -225,7 +221,7 @@ h1 {
   z-index: 9;
   position: relative;
   bottom: 540px;
-  width: 500px;
+  width: 80%;
   height: 300px;
   background: linear-gradient(to bottom, #ffff00 0%, #ff3300 100%);
   border: 25px ridge #0066ff;
@@ -242,4 +238,51 @@ button {
 
 .win-score, .final-time, .star-rate {
 
+}
+
+/* media queries  */
+@media only screen and (max-width: 500px) {
+  .score-panel {
+    width: 100%;
+  }
+
+  header {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+  .score-panel .stars,
+  .score-panel .restart,
+  #timer, #stop-watch {
+    display: block;
+  }
+
+  .score-panel .restart {
+    margin-top: 0;
+    margin-bottom: 45px;
+  }
+
+  #stop-watch {
+    margin-top: 5px;
+  }
+
+  .deck {
+    margin-top: -20px;
+  }
+
+  .card {
+    margin: 1px;
+  }
+
+  .deck .card, .front-card, .back-card {
+    width: 75px;
+    height: 75px;
+  }
+
+  .back-card {
+    font-size: 25px;
+    padding-top: 25px;
+  }
 }
