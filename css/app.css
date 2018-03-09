@@ -59,6 +59,7 @@ h1 {
   .deck .card {
     height: 125px;
     width: 125px;
+    margin: 10px;
     font-size: 0;
     border-radius: 8px;
     cursor: pointer;
@@ -241,7 +242,39 @@ button {
 }
 
 /* media queries  */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1000px) {
+  .score-panel {
+    width: 100%;
+  }
+
+  header {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-size: 5em;
+  }
+
+  .score-panel .stars,
+  .score-panel .restart,
+  #timer, #stop-watch {
+    font-size: 2em;
+}
+
+@media only screen and (max-width: 700px) {
+  .score-panel {
+    width: 100%;
+    padding-bottom: 45px;
+  }
+
+  .deck .card {
+    /* margin: 3px; */
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
   .score-panel {
     width: 100%;
   }
@@ -272,7 +305,7 @@ button {
     margin-top: -20px;
   }
 
-  .card {
+  .deck .card {
     margin: 1px;
   }
 
@@ -284,5 +317,23 @@ button {
   .back-card {
     font-size: 25px;
     padding-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .deck .card {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 18px;
+  }
+
+  .score-panel {
+    padding-bottom: 0;
+  }
+
+  .score-panel .stars,
+  .score-panel .restart,
+  #timer, #stop-watch {
+    font-size: 1em;
   }
 }
