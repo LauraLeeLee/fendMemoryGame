@@ -1,7 +1,5 @@
 # Memory Game Project
 
-<!-- * Live version here: (https://lauraleelee.github.io/fendMemoryGame/) -->
-
 ## Table of Contents
 * [How to Play](#howtoplay)
 * [Introduction](#Introduction)
@@ -9,7 +7,7 @@
 * [Contributing](#contributing)
 
 ## How to Play
-* Click link above for live version
+* Click [here for live version](https://lauraleelee.github.io/fendMemoryGame/)
 * Object of the game is to match all the pairs of cards in the least
   amount of moves in the least amount of time.
 * Click on a card to show card, click on another to find its match.  

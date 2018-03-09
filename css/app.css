@@ -173,10 +173,14 @@ h1 {
 /* Styles for the Score Panel */
 .score-panel {
     color: #000099;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     text-align: center;
-    width: 85%;
+    width: 90%;
     background: linear-gradient(to bottom, #ffff00 0%, #ff3300 100%);
+}
+
+.score-info {
+  font-size: 1.3em;
 }
 
 .score-panel .stars {
@@ -203,9 +207,9 @@ h1 {
 
 #timer, #stop-watch {
   display: inline-block;
-  font-size: 1em;
+  /* font-size: 1em; */
   color: #000099;
-  margin: 0 15px 0 15px;
+  margin: 0 5px 0 5px;
 }
 
 /* styles for the win modal */
