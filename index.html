@@ -6,35 +6,32 @@
     <meta name="description" content="Memory Game">
     <title>Memory Game</title>
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda"> -->
     <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chivo:300,400,700,900">
     <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body>
     <div class="container">
-        <section class="score-panel">
-          <header>
-              <h1>Memory Game</h1>
-          </header>
-        	<ul class="stars score-info">
-        		<li><i class="fa fa-star one "></i></li>
-        		<li><i class="fa fa-star two "></i></li>
-        		<li><i class="fa fa-star three "></i></li>
-        	</ul>
-        	<span class="moves score-info">0</span><span class = "moves score-info">Moves</span>
-            <p id = "stop-watch" class = "score-info">Timer:<span id="timer" class = "score-info"></span> </p>
-            <p class="restart score-info">Reset game<i class="fa fa-repeat score-info"></i></p>
-        </section>
-        <ul class="deck">
-            <!-- <li class="card"><i class="fa ${card}"></i></li> -->
-        </ul>
+      <section class="score-panel">
+        <header>
+            <h1>Memory Game</h1>
+        </header>
+      	<ul class="stars score-info">
+      		<li><i class="fa fa-star one "></i></li>
+      		<li><i class="fa fa-star two "></i></li>
+      		<li><i class="fa fa-star three "></i></li>
+      	</ul>
+      	<span class="moves score-info">0</span><span class = "moves score-info">Moves</span>
+          <p id = "stop-watch" class = "score-info">Timer:<span id="timer" class = "score-info"></span> </p>
+          <p class="restart score-info">Reset game<i class="fa fa-repeat score-info"></i></p>
+      </section>
+      <ul class="deck">
     </div>
 
     <!--Win modal  -->
     <div id ="modal">
       <div id="modal-header">
         <h2> Congratulations! You Win!</h2>
-
       </div>
       <div>
         <p>Would you like to play again?
@@ -43,7 +40,6 @@
         </p>
       </div>
     </div>
-
     <script src="js/app.js"></script>
 </body>
 </html>

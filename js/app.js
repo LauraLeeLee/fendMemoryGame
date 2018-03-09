@@ -18,8 +18,7 @@
     timer = document.getElementById('stop-watch'),
     score = 0,
     matchedSets = 0,
-   //variable to check if game has started
-    gameStarted = false,
+    gameStarted = false, //variable to check if game has started
     timeCount,
     currentTime,
     cardsShuffled = [],

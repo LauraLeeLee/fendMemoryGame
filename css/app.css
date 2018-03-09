@@ -170,14 +170,13 @@ h1 {
 /* Styles for the Score Panel */
 .score-panel {
     color: #000099;
-    /* font-size: 1.5em; */
     text-align: center;
     width: 90%;
     background: linear-gradient(to bottom, #ffff00 0%, #ff3300 100%);
 }
 
 .score-info {
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 .score-panel .stars {
@@ -258,7 +257,6 @@ button {
   .score-panel .stars,
   .score-panel .restart,
   #timer, #stop-watch {
-    font-size: 2em;
 }
 
 @media only screen and (max-width: 700px) {
